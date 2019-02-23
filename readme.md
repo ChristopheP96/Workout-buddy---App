@@ -62,7 +62,7 @@ Geo Location
 - Add workouts to Google calendar.
 
 Profiles:
-- see other users profile
+- see other users profile.
 
 Homepage:
 - ...
@@ -77,10 +77,10 @@ Homepage:
 
 - GET / 
   - renders the homepage
-- GET /auth/signup
+- GET /signup
   - redirects to / if user logged in
   - renders the signup form (with flash msg)
-- POST /auth/signup
+- POST/signup
   - redirects to / if user logged in
   - body:
     - username
@@ -91,11 +91,11 @@ Homepage:
     - user not exists
   - create user with encrypted password
   - store user in session
-  - redirect to /events
-- GET /auth/login
+  - redirect to /user/home
+- GET/login
   - redirects to / if user logged in
   - renders the login form (with flash msg)
-- POST /auth/login
+- POST/login
   - redirects to / if user logged in
   - body:
     - username
@@ -105,65 +105,117 @@ Homepage:
     - user exists
     - passdword matches
   - store user in session
-  - redirect to /events
-- POST /auth/logout
+  - redirect to /user/home
+- POST/logout
   - body: (empty)
-  - redirect to /events
+  - redirect to /
 
-- GET /events
-  - renders the event list + the create form
-- POST /events/create 
-  - redirects to / if user is anonymous
-  - body: 
-    - name
-    - date
-    - location
-    - description
-  - validation
-    - fields not empty
-  - create event
-  - redirect to event details
-- GET /events/:id
-  - validation
-    - id is valid (next to 404)
-    - id exists (next to 404)
-  - renders the event detail page
-  - includes the list of attendees
-  - attend button if user not attending yet
-- POST /events/:id/attend 
-  - redirects to / if user is anonymous
-  - validation
-    - id is valid (next to 404)
-    - id exists (next to 404)
-  - body: (empty - the user is already stored in the session)
-  - store in attendees if not there yet
-  - redirect to event details
+- GET /user/home
+
+  1.If no profile set
+  - renders the sport list + the update profile(mandatory)
+
+  2.If profile
+    - renders the sport list  
+  
+- GET /user/myprofile
+  - renders view of the user's profile content
+
+- GET /user/myprofile/:id/update
+  - render view to update information
+- POST/user/myprofile/:id/update
+    - picture:
+    - name:
+    - favourite sports:
+    - who am I:
+  - redirect to /user/myprofile 
+
+- GET /user/myprofile/:id/delete
+- POST /user/myprofile/:id/delete
+  - redirect to /
+
+- GET /user/Sports
+    - renders list of sports available in the app  
+
+- GET /user/workouts 
+    - renders list of workouts created by the user.  
+
+- GET /user/workouts/create
+  - renders view with form.
+- POST /user/workouts/create 
+    - activity:
+    - meeting point :
+    - date:
+    - timeframe:
+    - difficulty:
+    - comment:
+  - redirect to /user/workouts 
+
+- GET /user/workouts/:id/update
+- POST /user/workouts/:id/update
+    - activity:
+    - meeting point :
+    - date:
+    - timeframe:
+    - difficulty:
+    - comment:
+  - redirect to /user/workouts 
+
+- GET /user/workouts/:id/delete
+- POST /user/workouts/:id/delete
+  - redirect to user/workouts
+
+
+- GET /user/Sports/workouts
+  - renders view of all created workouts in that sport
 
 ## Models
 
 User model
- 
+
+All these fields are required
+
 ```
 username: String
 password: String
 ```
 
-Event model
+Workout model
+
+All these fields are required
 
 ```
 owner: ObjectId<User>
+activity: String
+meeting point: String
+date: Date
+time frame: Number
+creator: [ObjectId<User>]
+attendees: [ObjectId<User>]
+sport: SportId<Sport>
+``` 
+User profile model
+
+All these fields are required
+
+```
+owner: ObjectId<User>
+picture: String
 name: String
 description: String
-date: Date
-location: String
-attendees: [ObjectId<User>]
+favourite sport: String
+
 ``` 
+Sport model
+```
+name: String
+```
 
 ## Links
 
 ### Trello
 
-[Link to your trello board](https://trello.com) or picture of your physical board
+[Link to your trello board](https://trello.com) 
 
 ### Git
 
