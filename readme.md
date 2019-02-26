@@ -211,13 +211,13 @@ favourite sport: String
 
 ### Trello
 
-[Link to your trello board](https://trello.com) 
+[Link to your trello board](https://trello.com/b/CpRiuGbv) 
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Repository Link](http://github.com)
+[Repository Link](https://github.com/IONDO/Workout-buddy---App/tree/master)
 
 [Deploy Link](http://heroku.com)
 
