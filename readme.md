@@ -110,32 +110,29 @@ Homepage:
   - body: (empty)
   - redirect to /
 
-- GET /user/home
+- GET /home
 
   1.If no profile set
-  - renders the sport list + the update profile(mandatory)
+  - renders the sport list + notification : the update profile(mandatory)
 
   2.If profile
-    - renders the sport list  
+    - renders list of sports available in the app  
   
-- GET /user/myprofile
+- GET /profile
   - renders view of the user's profile content
 
-- GET /user/myprofile/:id/update
+- GET /profile/:id/update
   - render view to update information
-- POST/user/myprofile/:id/update
+- POST/profile/:id/update
     - picture:
     - name:
     - favourite sports:
     - who am I:
   - redirect to /user/myprofile 
 
-- GET /user/myprofile/:id/delete
+- GET /profile/:id/delete
 - POST /user/myprofile/:id/delete
   - redirect to /
-
-- GET /user/Sports
-    - renders list of sports available in the app  
 
 - GET /user/workouts 
     - renders list of workouts created by the user.  
@@ -177,7 +174,9 @@ All these fields are required
 
 ```
 username: String
+full name: String
 password: String
+email: String
 ```
 
 Workout model
@@ -192,7 +191,7 @@ date: Date
 time frame: Number
 creator: [ObjectId<User>]
 attendees: [ObjectId<User>]
-sport: SportId<Sport>
+sport: String
 ``` 
 User profile model
 
@@ -206,10 +205,7 @@ description: String
 favourite sport: String
 
 ``` 
-Sport model
-```
-name: String
-```
+
 
 ## Links
 
