@@ -17,7 +17,7 @@ module.exports = {
     if (req.session.currentUser.role === role) {
       next();
     } else {
-      res.redirect('login');
+      res.redirect('/login');
     }
   },
 };
