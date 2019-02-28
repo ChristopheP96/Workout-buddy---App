@@ -189,9 +189,9 @@ activity: String
 meeting point: String
 date: Date
 time frame: Number
-creator: [ObjectId<User>]
 attendees: [ObjectId<User>]
-sport: String
+comment: String
+
 ``` 
 User profile model
 
