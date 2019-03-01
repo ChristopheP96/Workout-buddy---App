@@ -50,6 +50,10 @@ app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/profile', profileRouter);
 
+app.get('/', (req, res, next) => {
+  res.render('front');
+});
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
