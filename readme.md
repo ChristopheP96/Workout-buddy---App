@@ -1,4 +1,5 @@
-# Workout buddy
+![Workout Buddies logo](/public/images/minilogo.jpeg) 
+# Workout Buddies
 
 ## Description
 
