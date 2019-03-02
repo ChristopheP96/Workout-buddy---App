@@ -11,6 +11,7 @@ const MongoStore = require('connect-mongo')(session);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const profileRouter = require('./routes/profile');
+const sportsRouter = require('./routes/sports');
 
 mongoose.connect('mongodb://localhost:27017/WorkoutApp', { useNewUrlParser: true })
   .then(() => {
@@ -49,6 +50,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/profile', profileRouter);
+app.use('/sports', sportsRouter);
 
 app.get('/', (req, res, next) => {
   res.render('front');
