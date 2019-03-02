@@ -1,4 +1,17 @@
 <h1>My Workouts</h1>
 <div>Wourkouts you're attending</div>
+<% workouts.forEach((workout) => { %>
+    <a href="/user/workouts/<%= workout._id %>">
+      <%= workout.activity %>
+    </a>
+    <a href="/user/workouts/<%= workout._id %>/update">
+      Update
+    </a>
+    <form action="/user/workouts/<%= workout._id %>/delete" method="post">
+      <input type="submit" value="Delete">
+    </form>
+    <br>
+<% })%>
+
 <div>Workouts not matched yet</div>
 <a href="/user/workouts/new">Create a new Workout</a>

@@ -11,10 +11,6 @@ router.get('/', (req, res, next) => {
   res.render('home');
 });
 
-/* GET users listing. */
-router.get('/workouts', (req, res, next) => {
-  res.render('workouts');
-});
 
 /* GET new workout */
 router.get('/workouts/new', (req, res, next) => {
@@ -43,6 +39,18 @@ router.post('/workouts/new', (req, res, next) => {
   })
     .then(() => {
       res.redirect('/user/workouts');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+/* GET users workouts listing. */
+router.get('/workouts', (req, res, next) => {
+  Workout.find({ userId: req.session.currentUser._id })
+    .then((workouts) => {
+      res.render('workouts', {
+        workouts,
+      });
     })
     .catch((error) => {
       next(error);
