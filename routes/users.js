@@ -57,4 +57,63 @@ router.get('/workouts', (req, res, next) => {
     });
 });
 
+/* GET see workout details */
+
+router.get('/workouts/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const workout = await Workout.findById(id);
+    res.render('workout', { workout });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/workouts/:id/update', (req, res, next) => {
+  const { id } = req.params;
+  Workout.findById(id)
+    .then((workout) => {
+      res.render('update', {
+        workout,
+      });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+router.post('/workouts/:id/update', (req, res, next) => {
+  const { id } = req.params;
+  const { 
+    activity,
+    meetingpoint,
+    date,
+    timeframe,
+    comment,
+  } = req.body;
+  Workout.findByIdAndUpdate(id, { 
+    activity,
+    meetingpoint,
+    date,
+    timeframe,
+    comment })
+    .then(() => {
+      res.redirect('/user/workouts');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+router.post('/workouts/:id/delete', (req, res, next) => {
+  const { id } = req.params;
+  Workout.findByIdAndDelete(id)
+    .then(() => {
+      res.redirect('/user/workouts');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 module.exports = router;
