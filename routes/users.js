@@ -84,19 +84,20 @@ router.get('/workouts/:id/update', (req, res, next) => {
 
 router.post('/workouts/:id/update', (req, res, next) => {
   const { id } = req.params;
-  const { 
+  const {
     activity,
     meetingpoint,
     date,
     timeframe,
     comment,
   } = req.body;
-  Workout.findByIdAndUpdate(id, { 
+  Workout.findByIdAndUpdate(id, {
     activity,
     meetingpoint,
     date,
     timeframe,
-    comment })
+    comment,
+  })
     .then(() => {
       res.redirect('/user/workouts');
     })
