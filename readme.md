@@ -68,7 +68,7 @@ Profiles:
 Homepage:
 - ...
 
-## ROUTES:  Ejemplo de tabla de cómo debe quedar
+## ROUTES
 
 | Method      | Description | Test Text     |
 | :---        |    :----:   |          :---:|
@@ -179,6 +179,12 @@ full name: String
 password: String
 email: String
 ```
+those fields are not required
+```
+picture: String
+description: String
+favourite sport: String
+```
 
 Workout model
 
@@ -194,36 +200,18 @@ attendees: [ObjectId<User>]
 comment: String
 
 ``` 
-User profile model
-
-All these fields are required
-
-```
-owner: ObjectId<User>
-picture: String
-name: String
-description: String
-favourite sport: String
-
-``` 
-
-
 ## Links
 
 ### Trello
 
-[Link to your trello board](https://trello.com/b/CpRiuGbv) 
+[Trello board](https://trello.com/b/CpRiuGbv) 
 
 ### Git
-
-The url to your repository and to your deployed project
 
 [Repository Link](https://github.com/IONDO/Workout-buddy---App/tree/master)
 
 [Deploy Link](http://heroku.com)
 
 ### Slides
-
-The url to your presentation slides
 
 [Slides Link](http://slides.com)

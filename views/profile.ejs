@@ -1,7 +1,26 @@
 <h1>Welcome to your profile</h1>
 
-<div>Picture</div>
-<div>Preferences</div>
-<div>Brief Description</div>
+<h2> Hi <%= user.username %> </h2>
+
+<form action="/profile" method="post">
+
+  <div>
+    <label for="picture">Picture</label> <br>
+    <input type="text" name="picture" id="picture"> <br>
+  </div>
+  <div>
+    <label for="preferences">Which are you favourite sports ?</label><br>
+    <h2><%= user.preferences %> </h2> <br>
+    <input type="text" name="preferences" id="preferences"><br>
+  </div>
+  <div>
+    <label for="description">Write down a brief description</label><br>
+    <h2><%= user.description %></h2><br>
+    <input type="text" name="description" id="description"><br>
+  </div>  
+    <input type="submit" value="create">
+  </form>
+
 <div>History of events</div>
 <div>link to create new event</div>
+
