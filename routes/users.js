@@ -26,7 +26,6 @@ router.post('/workouts/new', (req, res, next) => {
     meetingpoint,
     date,
     timeframe,
-    attendees,
     comment,
   } = req.body;
   Workout.create({
@@ -35,7 +34,7 @@ router.post('/workouts/new', (req, res, next) => {
     meetingpoint,
     date,
     timeframe,
-    attendees,
+    attendees: _id,
     comment,
   })
     .then(() => {
@@ -47,7 +46,7 @@ router.post('/workouts/new', (req, res, next) => {
 });
 /* GET users workouts listing. */
 router.get('/workouts', (req, res, next) => {
-  Workout.find({ userId: req.session.currentUser._id })
+  Workout.find({ attendees: req.session.currentUser._id })
     .then((workouts) => {
       res.render('workouts', {
         workouts,
