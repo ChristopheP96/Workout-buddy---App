@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const Workout = require('../models/workout');
 const middlewares = require('../middlewares/index');
 
@@ -116,4 +117,17 @@ router.post('/workouts/:id/delete', (req, res, next) => {
     });
 });
 
+/* Join a workout */
+
+router.post('/workouts/:id/join', (req, res, next) => {
+  const attendeId = req.session.currentUser._id;
+  const { id } = req.params;
+  Workout.findByIdAndUpdate(id, { $push: { attendees: attendeId } })
+    .then(() => {
+      res.redirect('/user/workouts');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
 module.exports = router;

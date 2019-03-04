@@ -9,9 +9,9 @@ const workoutSchema = new Schema({
   },
   activity: { type: String },
   meetingpoint: { type: String, unique: true },
-  date: { type: Date, required: true },
+  date: { type: Date, required: false },
   timeframe: { type: Number },
-  attendees: { type: String },
+  attendees: [{ type: Schema.ObjectId, ref: 'User' }],
   comment: { type: String, required: true },
 
 }, { timestamps: true });
