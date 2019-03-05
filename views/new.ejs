@@ -18,36 +18,18 @@
     <label for="date">Date</label><br>
     <input type="date" name="date" id="date">
     <br>
-    <label for="timeframe">Time frame</label><br>
-    <select name="timeframe" id="timeframe">
-      <option value=""><b>24pm - 1am</b></option>
-      <option value=""><b>1am - 2am</b></option>
-      <option value=""><b>2am - 3am</b></option>
-      <option value=""><b>3am - 4am</b></option>
-      <option value=""><b>4am - 5am</b></option>
-      <option value=""><b>5am - 6am</b></option>
-      <option value=""><b>6am - 7am</b></option>
-      <option value=""><b>7am - 8am</b></option>
-      <option value=""><b>8am - 9am</b></option>
-      <option value=""><b>9am - 10am</b></option>
-      <option value=""><b>10am - 11am</b></option>
-      <option value=""><b>11am - 12am</b></option>
-      <option value=""><b>12pm - 1pm</b></option>
-      <option value=""><b>13pm - 14pm</b></option>
-      <option value=""><b>14pm - 15pm</b></option>
-      <option value=""><b>15pm - 16pm</b></option>
-      <option value=""><b>16pm - 17pm</b></option>
-      <option value=""><b>17pm - 18pm</b></option>
-      <option value=""><b>18pm - 19m</b></option>
-      <option value=""><b>19pm - 20pm</b></option>
-      <option value=""><b>20pm - 21pm</b></option>
-      <option value=""><b>21pm - 22pm</b></option>
-      <option value=""><b>22pm - 23pm</b></option>
-      <option value=""><b>23pm - 24pm</b></option>
-    </select>
+    <label for="duration">Duration </label><br>
+    <select name="duration" id="duration">
+        <option value="60" selected="selected"><b>1h</b></option>
+        <option value="30"><b>30m</b></option>
+        <option value="90"><b>1h 30m</b></option>
+        <option value="120"><b>2h</b></option>
+        <option value="180"><b>3h</b></option>
+        <option value="240"><b>4h</b></option>
+  </select>
     <br>
     <label for="comment">Comment</label><br>
-    <input type="text" name="comment" id="comment">
+    <textarea name="comment" rows="5" id="comment"></textarea>
     <br>
     <input type="submit" value="create">
   </form>
