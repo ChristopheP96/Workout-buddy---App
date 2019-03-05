@@ -50,7 +50,7 @@ router.post('/', upload.single('picture'), (req, res, next) => {
   const {
     _id,
   } = req.session.currentUser;
-  const picture = req.file.path;
+  const picture = req.file.filename;
   const {
     description,
     preferences,
