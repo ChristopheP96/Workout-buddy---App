@@ -2,25 +2,26 @@
 
 <h2> Hi <%= user.username %> </h2>
 
-<form action="/profile" method="post">
+<form action="/profile" method="post" enctype="multipart/form-data">
 
   <div>
-    <label for="picture">Picture</label> <br>
-    <input type="text" name="picture" id="picture"> <br>
-  </div>
-  <div>
+    <input type="file" id="picture" name="picture"/><br>
+    <label>Picture</label><br>
+    <img src="uploads/<%= user.profilePicture %>" alt="Smiley face" height="100" width="100">
+
+  </div><br>
+  <div><br>
     <label for="preferences">Which are you favourite sports ?</label><br>
-    <h2><%= user.preferences %> </h2> <br>
     <input type="text" name="preferences" id="preferences"><br>
-  </div>
+    <h2><%= user.preferences %> </h2> <br>
+  </div><br>
   <div>
     <label for="description">Write down a brief description</label><br>
-    <h2><%= user.description %></h2><br>
     <input type="text" name="description" id="description"><br>
+    <h2><%= user.description %></h2><br>
   </div>  
     <input type="submit" value="create">
   </form>
 
 <div>History of events</div>
 <div>link to create new event</div>
-

@@ -22,16 +22,16 @@ Share your passion for sports with other users and get to know other people like
   1. Profile picture
   2. Brief description
   3. List of favorit sports
-  4. List of workouts created by the user
-  5. List workouts the user is attending
+  
+  Possibility to Update info's; possibility to delete account.
 
 - **Logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
 
 - **Activity list** - As a user I want to see all the events available so that I can choose which ones I want to attend
 
-- **Events create** - As a user I want to be able to create a workout event so that I can let other people join the event.
+- **Create Workouts* - As a user I want to be able to create a workout event so that I can let other people join the event.
 
-- **Events detail** - As a user I want to see the workout details and attendee list of one event so that I can decide if I want to attend
+- **See all created workouts** - As a user I want to see the workout details and attendee list of one event so that I can decide if I want to attend
 
   1. Sport
   2. Meeting point.
@@ -42,7 +42,7 @@ Share your passion for sports with other users and get to know other people like
   7. Creator.
   8. Current attendees.
  
-- **Attend work** - As a user I want to be able join to workouts so that the organizers can count me in.
+- **Attend workouts** - As a user I want to be able join to workouts so that the organizers can count me in.
 
 - **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault.
 
@@ -75,7 +75,7 @@ Homepage:
 | GET         | /           | Renders the homepage   |
 | GET         | /auth/signup|redirects to / if user logged in 
 | POST        | /auth/signup|redirects to / if user logged in|
-
+|             |
 - GET / 
   - renders the homepage
 - GET /signup
