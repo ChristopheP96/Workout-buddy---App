@@ -3,8 +3,12 @@
 <ul>
     <li>Location: <%= workout.meetingpoint %></li>
     <li>Date: <%= workout.date %></li>
-    <li>Time: <%= workout.timeframe %></li>
-    <li>Attendees: <%= workout.attendees %></li>
+    <li>Time: <%= workout.duration %></li>
+    <li>Attendees:
+    <% workout.attendees.forEach((attendee) => { %>
+        <% attendee.username %>
+    <% })%>
+    </li>
     <li>Comments: <%= workout.comment %></li>
 </ul>
 

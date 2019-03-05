@@ -9,11 +9,12 @@
     <label for="date">Date</label><br>
     <input type="date" name="date" id="date" value="<%= workout.date %>">
     <br>
-    <label for="timeframe">Time frame</label><br>
-    <input type="number" name="timeframe" id="timeframe" value="<%= workout.timeframe %>">
+    <label for="timeframe">Duration </label><br>
+    <input type="time" name="duration" id="duration" value="<%= workout.duration %>">
     <br>
     <label for="comment">Comment</label><br>
-    <input type="text" name="comment" id="comment" value="<%= workout.comment %>">
+    <textarea name="comment" id="comment" value="<%= workout.comment %>">
+    </textarea>  
     <br>
   <input type="submit" value="Update">
 </form>

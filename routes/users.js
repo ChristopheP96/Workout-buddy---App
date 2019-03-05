@@ -25,7 +25,7 @@ router.post('/workouts/new', (req, res, next) => {
     activity,
     meetingpoint,
     date,
-    timeframe,
+    duration,
     comment,
   } = req.body;
   Workout.create({
@@ -33,7 +33,7 @@ router.post('/workouts/new', (req, res, next) => {
     activity,
     meetingpoint,
     date,
-    timeframe,
+    duration,
     attendees: _id,
     comment,
   })
@@ -88,14 +88,14 @@ router.post('/workouts/:id/update', (req, res, next) => {
     activity,
     meetingpoint,
     date,
-    timeframe,
+    duration,
     comment,
   } = req.body;
   Workout.findByIdAndUpdate(id, {
     activity,
     meetingpoint,
     date,
-    timeframe,
+    duration,
     comment,
   })
     .then(() => {

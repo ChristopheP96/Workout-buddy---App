@@ -3,7 +3,7 @@
         <h1> <%= workout.activity %> workouts availables </h1>
         <p><%= workout.meetingpoint %></p>
         <p><%= workout.date %></p>
-        <p><%= workout.timeframe %></p>
+        <p><%= workout.duration %></p>
         <form action="/user/workouts/<%= workout._id %>/join" method="post">
             <input type="submit" value="Join">
         </form>
