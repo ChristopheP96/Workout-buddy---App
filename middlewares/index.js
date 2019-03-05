@@ -3,12 +3,12 @@ module.exports = {
     if (req.session.currentUser) {
       next();
     } else {
-      res.redirect('/login');
+      res.redirect('/');
     }
   },
   anonRoute: (req, res, next) => {
     if (req.session.currentUser) {
-      res.redirect('/login');
+      res.redirect('/');
     } else {
       next();
     }
@@ -17,7 +17,7 @@ module.exports = {
     if (req.session.currentUser.role === role) {
       next();
     } else {
-      res.redirect('/login');
+      res.redirect('/');
     }
   },
 };
