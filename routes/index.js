@@ -4,6 +4,37 @@ const User = require('../models/user');
 
 const router = express.Router();
 
+/* GET front page. */
+router.get('/', (req, res, next) => {
+  res.render('front', { errorMessage: undefined, layout: false });
+});
+
+router.post('/', (req, res, next) => {
+  const { username, password } = req.body;
+
+  User.findOne({ "username": username })
+    .then((user) => {
+      if (!user) {
+        res.render('front', {
+          errorMessage: 'The username or the password is incorrect.',
+        });
+        return;
+      }
+      if (bcrypt.compareSync(password, user.password)) {
+        // Save the login in the session!
+        req.session.currentUser = user;
+        res.redirect('/user');
+      } else {
+        res.render('front', {
+          errorMessage: 'The username or the password is incorrect.',
+        });
+      }
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 /* GET singup page. */
 
 router.get('/signup', (req, res, next) => {
