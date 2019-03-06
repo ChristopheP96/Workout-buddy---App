@@ -54,10 +54,9 @@ app.use('/profile', profileRouter);
 app.use('/sports', sportsRouter);
 
 
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404));
+  res.status(404).render('404');
 });
 
 // error handler
@@ -68,7 +67,7 @@ app.use((err, req, res) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('500');
 });
 
 module.exports = app;

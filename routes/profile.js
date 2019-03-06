@@ -5,7 +5,7 @@ const middlewares = require('../middlewares/index');
 
 const storage = multer.diskStorage({
   destination: './uploads',
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname);
   }
 });
@@ -33,12 +33,12 @@ router.use(middlewares.protectedRoute);
 /* GET see profile details */
 router.get('/', async (req, res, next) => {
   const {
-    _id
+    _id,
   } = req.session.currentUser;
   try {
     const user = await User.findById(_id);
     res.render('profile', {
-      user
+      user,
     });
   } catch (error) {
     next(error);
@@ -60,12 +60,7 @@ router.post('/', upload.single('picture'), (req, res, next) => {
     description,
     preferences,
   })
-    .then(() => {
-      console.log(req.file.path);
-      console.log('QDQKDJQDLFQHLDF');
-      console.log(picture);
-      res.redirect('/profile');
-    })
+    .then(() => {})
     .catch((error) => {
       next(error);
     });
@@ -74,7 +69,7 @@ router.post('/', upload.single('picture'), (req, res, next) => {
 /* Delete account */
 router.post('/', (req, res, next) => {
   const {
-    id
+    id,
   } = req.params;
   User.findByIdAndDelete(id)
     .then(() => {
