@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Workout buddies</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Workout buddies</h1>
-    <p>Welcome to Workout buddies</p>
-    <img src="images/logo.jpeg" alt="logo">
+<%- include('partials/frontpage') %>
+<h1>Workout Buddies</h1>
+  <img class="logo" src="images/logo.jpeg" alt="logo" width="80" height="80">
 
-    <p>You have an account?</p>
-    <a href="/login/">Login</a>
+  <form class="form-signin" action="/" method="POST" id="form">
+      <div class="form-label-group">
+      <label for="username" class="sr-only">Username</label>
+      <input type="text" name="username" class="form-control" 
+      placeholder="Username" required autofocus>
+    </div>
+    <div class="form-label-group">
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" name="password" class="form-control" 
+      placeholder="Password" required>
+    </div>
+      <% if (errorMessage) { %>
+          <p><%= errorMessage %></p>
+      <% } %>
+  
+      <button type="submit" class="btn btn-lg btn-primary btn-block">Log in</button>
 
     <p>You don't have an account yet?</p>
-    <a href="/signup/">Sign Up</a>
-  </body>
-</html>
+    <a type="submit" class="btn btn-success" href="/signup/">Sign Up</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+  </form>
