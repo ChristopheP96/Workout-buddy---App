@@ -50,15 +50,14 @@ router.get('/updateProfile', async (req, res, next) => {
   const {
     _id,
   } = req.session.currentUser;
-  const user = User.findById(_id)
-    .then(() => {
-      res.render('updateProfile', {
-        user,
-      });
-    })
-    .catch((error) => {
-      next(error);
+  try {
+    const user = await User.findById(_id);
+    res.render('updateProfile', {
+      user,
     });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.post('/updateProfile', upload.single('picture'), (req, res, next) => {
@@ -76,7 +75,7 @@ router.post('/updateProfile', upload.single('picture'), (req, res, next) => {
     preferences,
   })
     .then(() => {
-      res.redirect('/');
+      res.redirect('/profile');
     })
     .catch((error) => {
       next(error);
@@ -84,9 +83,10 @@ router.post('/updateProfile', upload.single('picture'), (req, res, next) => {
 });
 
 /* Delete account */
-router.post('/deleteProfile', (req, res, next) => {
-  const { id } = req.session.currentUser;
-  User.findByIdAndRemove(id)
+router.post('/:userId/deleteProfile', (req, res, next) => {
+  const { userId } = req.session.currentUser._id;
+  const { id } = req.params;
+  User.findByIdAndRemove(id, { $in: { _id: userId } })
     .then(() => {
       res.redirect('/');
     })

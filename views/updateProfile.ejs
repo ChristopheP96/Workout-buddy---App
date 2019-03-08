@@ -1,6 +1,6 @@
 
 <h2>Hey <%= user.username %>, here you can update the information you want people to see about you</h2>
-<form action="/updateProfile" method="post" enctype="multipart/form-data">
+<form action="/profile/updateProfile" method="post" enctype="multipart/form-data">
     <div>
         <label>Picture</label>
         <input type="file" id="picture" name="picture"/>      
@@ -14,8 +14,4 @@
       <textarea type="text" name="description" id="description"></textarea>
     </div>  
       <input type="submit" value="Update">
-    </form>
-
-    <form action="/deleteProfile" method="post">
-        <input type="submit" value="Delete your account">
     </form>

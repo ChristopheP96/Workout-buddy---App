@@ -1,26 +1,32 @@
-<h1>Welcome to your profile</h1>
+<div class= "profile-container">
+<div class="profile profile--title ">
+    <h1>Profile</h1>
+</div>
 
-<h2> Hi <%= user.username %>, that's the information other users see about you </h2>
+<div class="profile">
+    <h2 class="profile--intro"> Hi <%= user.username %>, that's the information other users see about you </h2>
+</div>
 
-<div>
-  <h2>Your profile pucture</h2>
+
+<div class="profile profile-picture">
+  <h2>Your profile picture</h2>
   <img src="<%= user.picture %>" alt="Smiley face" height="200" width="200">
 </div>
-<div>
+<div class="profile fav-sports">
   <h2>Your favourite sports</h2>
   <h3><%= user.preferences %> </h3> <br>
 </div>
-<div>
+<div class="profile profile-description">
   <h2>Your brief description</h2>
   <h3><%= user.description %></h><br>
 </div>  
 
-<a href="/profile/updateProfile">
+<a class="profile profile-links" href="/profile/updateProfile">
   Click here to update your profile
+</a><br>
+
+<a class="profile profile-links" href="/profile/deleteProfile">
+Do you want to delete permanently your profile?
 </a>
 
-<a href="/profile/deleteProfile">
-  Do you want to delete your account?
-</a>
-
-
+</div>
