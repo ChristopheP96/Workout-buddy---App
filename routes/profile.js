@@ -83,10 +83,11 @@ router.post('/updateProfile', upload.single('picture'), (req, res, next) => {
 });
 
 /* Delete account */
-router.post('/:userId/deleteProfile', (req, res, next) => {
-  const { userId } = req.session.currentUser._id;
-  const { id } = req.params;
-  User.findByIdAndRemove(id, { $in: { _id: userId } })
+router.post('/deleteProfile', (req, res, next) => {
+  const {
+    _id,
+  } = req.session.currentUser;
+  User.findByIdAndRemove(_id)
     .then(() => {
       res.redirect('/');
     })

@@ -25,6 +25,7 @@ router.post('/workouts/new', (req, res, next) => {
     activity,
     meetingpoint,
     date,
+    time,
     duration,
     comment,
   } = req.body;
@@ -33,6 +34,7 @@ router.post('/workouts/new', (req, res, next) => {
     activity,
     meetingpoint,
     date,
+    time,
     duration,
     attendees: _id,
     comment,

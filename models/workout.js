@@ -12,6 +12,7 @@ const workoutSchema = new Schema({
   date: { type: Date },
   duration: { type: Number },
   attendees: [{ type: Schema.ObjectId, ref: 'User' }],
+  time: { type: Number },
   comment: { type: String, required: true },
 
 }, { timestamps: true });
