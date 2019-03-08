@@ -1,0 +1,18 @@
+.links {
+    margin-bottom: 15px;
+}
+
+.link {
+    border-radius: 80px;
+    background-color: #EFA31D;
+    color: whitesmoke;
+}
+
+.nav {
+    background-color: #593196;
+}
+
+.icon {
+    font-family:'FontAwesome';
+    color: whitesmoke;
+}

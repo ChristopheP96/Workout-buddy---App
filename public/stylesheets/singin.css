@@ -58,3 +58,11 @@ body {
 .home {
   margin-top: 50px;
 }
+
+.uncentered-new-worktout {
+  margin: 0 auto;
+  padding: 15px;
+  box-sizing: unset;
+  text-align: left;
+  
+}
