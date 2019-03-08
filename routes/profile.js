@@ -46,7 +46,22 @@ router.get('/', async (req, res, next) => {
 });
 
 /* UPDATE profile */
-router.post('/', upload.single('picture'), (req, res, next) => {
+router.get('/updateProfile', async (req, res, next) => {
+  const {
+    _id,
+  } = req.session.currentUser;
+  const user = User.findById(_id)
+    .then(() => {
+      res.render('updateProfile', {
+        user,
+      });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+router.post('/updateProfile', upload.single('picture'), (req, res, next) => {
   const {
     _id,
   } = req.session.currentUser;
@@ -60,18 +75,18 @@ router.post('/', upload.single('picture'), (req, res, next) => {
     description,
     preferences,
   })
-    .then(() => {})
+    .then(() => {
+      res.redirect('/');
+    })
     .catch((error) => {
       next(error);
     });
 });
 
 /* Delete account */
-router.post('/', (req, res, next) => {
-  const {
-    id,
-  } = req.params;
-  User.findByIdAndDelete(id)
+router.post('/deleteProfile', (req, res, next) => {
+  const { id } = req.session.currentUser;
+  User.findByIdAndRemove(id)
     .then(() => {
       res.redirect('/');
     })

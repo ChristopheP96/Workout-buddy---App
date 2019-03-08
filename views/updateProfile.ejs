@@ -1,0 +1,21 @@
+
+<h2>Hey <%= user.username %>, here you can update the information you want people to see about you</h2>
+<form action="/updateProfile" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Picture</label>
+        <input type="file" id="picture" name="picture"/>      
+    </div>
+    <div>
+      <label for="preferences">Which are you favourite sports ?</label>
+      <input type="text" name="preferences" id="preferences">
+    </div>
+    <div>
+      <label for="description">Write down a brief description</label><br>
+      <textarea type="text" name="description" id="description"></textarea>
+    </div>  
+      <input type="submit" value="Update">
+    </form>
+
+    <form action="/deleteProfile" method="post">
+        <input type="submit" value="Delete your account">
+    </form>
