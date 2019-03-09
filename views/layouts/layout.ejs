@@ -10,35 +10,52 @@
     <link rel="stylesheet" href="/stylesheets/singin.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Workout Buddies</title>
   </head>
   <body class="text-center">
-      <nav class="navbar navbar-expand-sm navbar-dark nav mb-4">
-        <a class="navbar-brand" href="#">Workout Buddy</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" 
-        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto">
-          <div>
-            <i class="fas fa-home icon"></i>
-          </div>
-        <li class="nav-item active"><a class="nav-link" href="/user/">Home</a></li>
-        <div>
-            <i class="fas fa-user-circle icon"></i>
-        </div>
-        <li class="nav-item active"><a class="nav-link" href="/profile">My Profile</a></li>
-        <div>
-            <i class="icon"><img width="40%" height="40" src="/images/runners.png"></i>
-        </div>
-        <li class="nav-item active"><a class="nav-link" href="/user/workouts">My Workouts</a></li>
-        <div>
-            <i class="fas fa-power-off"></i>
-        </div>
-        <li class="nav-item active"><a class="nav-link" href="/logout">Log out</a></li>
-        </ul>
-        </div>
-        </nav>
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark nav mb-4">
+      <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li>
+          <a href="/user/">    
+            <div class="icons">
+              <i class="fas fa-home "></i>
+            </div>
+            <div>Home</div>
+          </a>
+        </li>
+        <li>
+          <a href="/profile">
+            <div class="icons">
+              <i class="fas fa-user-circle icon"></i>
+            </div>
+          <div>Profile</div>
+          </a>
+        </li>
+        <li>
+          <a href="/user/workouts">
+            <div class="icons">
+              <i class="fas fa-file-alt icon"></i>
+            </div>
+            <div>Workouts</div>
+          </a>
+        </li>
+        <li>
+          <a href="/logout">
+            <div class="icons">
+              <i class="fas fa-power-off icon"></i>
+            </div>
+            <div><span>Log out</span></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    </div>
+    </nav>
     <%- body %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
