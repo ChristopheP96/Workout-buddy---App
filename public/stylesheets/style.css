@@ -16,3 +16,30 @@
     font-family:'FontAwesome';
     color: whitesmoke;
 }
+
+.profile-unit {
+   width: 17em;
+   margin: 0 auto;
+}
+
+.profile-text-container {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.profile-img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.profile-titles {
+    font-size: 1em;
+}
+
+.profile-content {
+ font-size: 2em;
+}
+
+.user-name, .profile-title, .profile-explanation {
+    padding-bottom: 1em;
+}

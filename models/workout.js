@@ -14,6 +14,8 @@ const workoutSchema = new Schema({
   attendees: [{ type: Schema.ObjectId, ref: 'User' }],
   time: { type: Number },
   comment: { type: String, required: true },
+  creatorPicture: { type: String },
+  creatorName: { type: String },
 
 }, { timestamps: true });
 

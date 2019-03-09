@@ -20,6 +20,8 @@ router.get('/workouts/new', (req, res, next) => {
 
 router.post('/workouts/new', (req, res, next) => {
   const { _id } = req.session.currentUser;
+  const { picture } = req.session.currentUser.picture;
+  const { creator } = req.session.currentUser.name;
   const {
     userId,
     activity,
@@ -28,6 +30,8 @@ router.post('/workouts/new', (req, res, next) => {
     time,
     duration,
     comment,
+    creatorPicture,
+    creatorName,
   } = req.body;
   Workout.create({
     userId: _id,
@@ -38,6 +42,8 @@ router.post('/workouts/new', (req, res, next) => {
     duration,
     attendees: _id,
     comment,
+    creatorPicture: picture,
+    creatorName: creator,
   })
     .then(() => {
       res.redirect('/user/workouts');
