@@ -43,6 +43,7 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   const { name, email, username, password } = req.body;
+  const { defaultPicture } = '/uploads/default-picture.jpeg';
   const bcryptSalt = 10;
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
@@ -66,6 +67,7 @@ router.post('/signup', (req, res, next) => {
     email,
     username,
     password: hashPass,
+    picture: defaultPicture,
   })
     .then(() => {
       res.redirect('/user');
