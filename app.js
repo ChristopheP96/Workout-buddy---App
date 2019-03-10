@@ -13,6 +13,7 @@ const usersRouter = require('./routes/users');
 const profileRouter = require('./routes/profile');
 const sportsRouter = require('./routes/sports');
 
+
 const databaseUrl = process.env.DATABASE_URL || 'mongodb://localhost:27017/WorkoutApp';
 mongoose.connect(databaseUrl, { useNewUrlParser: true })
   .then(() => {
@@ -23,6 +24,8 @@ mongoose.connect(databaseUrl, { useNewUrlParser: true })
   });
 
 const app = express();
+
+app.set('port', process.env.PORT || 3000);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
