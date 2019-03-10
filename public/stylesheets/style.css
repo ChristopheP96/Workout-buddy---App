@@ -24,9 +24,9 @@
 }
 
 .nav {
+    height: 60px;
     background-color: #593196;
 }
-
 .image {
     height: 60px;
     width: 60px;
@@ -111,3 +111,42 @@
 .user-name, .profile-title, .profile-explanation {
     padding-bottom: 1em;
 }
+.icon {
+    font-family:'FontAwesome';
+    color: black;
+}
+
+.list-a {
+    text-decoration: none;
+    padding: 0 30px;
+    display: block;
+    width: 100%;
+}
+
+.icons {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 auto 10px;
+}
+
+.list-a .icons .fas {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 34px;
+    transition: 0.5s;
+    color: whitesmoke;
+}
+.list-a:hover .icons .fas {
+    transition: all 200ms ease;
+    
+}
+
+.list-a:hover .icons .fas:last-child {
+    color:#D406A7;
+    
+} 
+
+
