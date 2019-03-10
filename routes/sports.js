@@ -1,6 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 const express = require('express');
 const moment = require('moment');
 const Workout = require('../models/workout');
+const User = require('../models/user');
 const middlewares = require('../middlewares/index');
 
 
@@ -8,20 +10,28 @@ const router = express.Router();
 router.use(middlewares.protectedRoute);
 
 function sportWorkouts(activity) {
-  return (req, res, next) => {
-    const { _id } = req.session.currentUser;
-    Workout.find({ activity })
-      .then((workouts) => {
-        res.render('sport', {
-          userId: _id,
-          moment,
-          workouts,
-          activity,
-        });
-      })
-      .catch((error) => {
-        next(error);
+  return async (req, res, next) => {
+    try {
+      const workouts = await Workout.find({ activity });
+      const ownerIds = Array.from(new Set(workouts.map(workout => workout.attendees[0])));
+      const owners = await User.find({
+        _id: {
+          $in: ownerIds,
+        },
       });
+      const ownerPicturesById = {};
+      owners.forEach((owner) => {
+        ownerPicturesById[owner._id] = owner.picture;
+      });
+      res.render('sport', {
+        moment,
+        workouts,
+        ownerPicturesById,
+        activity,
+      });
+    } catch (error) {
+      next(error);
+    }
   };
 }
 /* GET sport page. */

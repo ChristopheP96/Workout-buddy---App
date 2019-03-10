@@ -5,11 +5,13 @@
     <div class="col-md-3">    
     <ul class="list-container mb-3">  
         <div class="list-content">      
-            <li>Location: <%= workout.meetingpoint %></li>
-            <li>Date: <%= moment(workout.dateTime).format('MMMM Do YYYY') %></li>
-            <li>Time: <%= moment(workout.dateTime).format('h:mm:ss a') %></li>
-            <li>Duration: <%= workout.duration %></li>
-        
+            <li>Location: <span class="font"> <%= workout.meetingpoint %></span></li>
+            <li>Date: <span class="font"><%= moment(workout.dateTime).format('MMMM Do YYYY') %></span></li>
+            <li>Time: <span class="font"><%= moment(workout.dateTime).format('h:mm:ss a') %></span></li>
+            <li>Duration: <span class="font"><%= workout.duration %> min</span></li>
+        <div>
+            <img class="image" src="/<%= ownerPicturesById[workout.attendees[0]] %>">
+        </div>
         <div class="join-button">    
             <form action="/user/workouts/<%= workout._id %>/join" method="post">
               <input type="submit" class="btn btn-success" value="Join">

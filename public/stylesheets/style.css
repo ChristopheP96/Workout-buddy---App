@@ -1,3 +1,10 @@
+.font {
+    font-weight: normal;
+}
+.icon {
+    font-family:'FontAwesome';
+    color: whitesmoke;
+}
 .join-button {
     float: right;
     padding: 5px;
@@ -16,9 +23,19 @@
     background-color: #593196;
 }
 
-.icon {
-    font-family:'FontAwesome';
-    color: whitesmoke;
+.image {
+    height: 60px;
+    width: 60px;
+    float: right;
+    margin: 5px;
+    position: absolute;
+    top: 110px;
+    right: 10px;
+}
+
+.image-container {
+    float: right;
+    margin: 0 -2px 0 0;
 }
 
 .list-content {
@@ -28,11 +45,13 @@
     cursor: pointer;
     display: grid;
     float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
     margin-bottom: 15px;
-    max-width: 300px;
+    max-width: 315px;
     min-height: 20px;
     position: relative;
-    padding: 10px;
+    padding: 25px;
     text-align: left;
     text-decoration: none;
     width: 100%;
