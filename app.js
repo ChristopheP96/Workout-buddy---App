@@ -13,7 +13,8 @@ const usersRouter = require('./routes/users');
 const profileRouter = require('./routes/profile');
 const sportsRouter = require('./routes/sports');
 
-mongoose.connect('mongodb://localhost:27017/WorkoutApp', { useNewUrlParser: true })
+const databaseUrl = process.env.DATABASE_URL || 'mongodb://localhost:27017/WorkoutApp';
+mongoose.connect(databaseUrl, { useNewUrlParser: true })
   .then(() => {
     console.log('connected');
   })
