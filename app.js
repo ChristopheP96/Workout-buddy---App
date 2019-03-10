@@ -20,14 +20,14 @@ mongoose.connect(databaseUrl, { useNewUrlParser: true })
     console.log('connected');
   })
   .catch((error) => {
-    next(error);
+    console.error(`cannot connect to mongodb at ${databaseUrl}`, error);
   });
 
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
 
-require('./env.js')(app, express);
+require('./env.js')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
