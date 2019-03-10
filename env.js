@@ -1,15 +1,17 @@
 /* eslint-disable func-names */
+const errorhandler = require('errorhandler')
+
 module.exports = function (app, express) {
   switch (process.env.NODE_ENV) {
+    case 'production':
+      app.use(errorhandler());
+      break;
+
     case 'development':
-      app.use(express.errorHandler({
+    default:
+      app.use(errorhandler({
         dumpExceptions: true,
         showStack: true,
       }));
-      break;
-    case 'production':
-      app.use(express.errorHandler());
-      break;
-    default:
   }
 };
