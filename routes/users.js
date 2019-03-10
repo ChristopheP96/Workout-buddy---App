@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const moment = require('moment');
 const Workout = require('../models/workout');
 const middlewares = require('../middlewares/index');
 
@@ -30,12 +30,15 @@ router.post('/workouts/new', (req, res, next) => {
     comment,
     picture,
   } = req.body;
+  const setTime = new Date(`1970-01-01T${time}`);
+  const dateTime = new Date(date);
+  dateTime.setHours(setTime.getHours());
+  dateTime.setMinutes(setTime.getMinutes());
   Workout.create({
     userId: _id,
     activity,
     meetingpoint,
-    date,
-    time,
+    dateTime,
     duration,
     attendees: _id,
     comment,
@@ -50,6 +53,7 @@ router.post('/workouts/new', (req, res, next) => {
 });
 /* GET users workouts listing. */
 router.get('/workouts', (req, res, next) => {
+  // eslint-disable-next-line no-underscore-dangle
   Workout.find({ attendees: req.session.currentUser._id })
     .then((workouts) => {
       res.render('workouts', {
@@ -67,7 +71,7 @@ router.get('/workouts/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
     const workout = await Workout.findById(id);
-    res.render('workout', { workout });
+    res.render('workout', { moment, workout });
   } catch (error) {
     next(error);
   }

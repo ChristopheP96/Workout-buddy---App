@@ -1,73 +1,35 @@
 const express = require('express');
+const moment = require('moment');
 const Workout = require('../models/workout');
+const middlewares = require('../middlewares/index');
+
 
 const router = express.Router();
+router.use(middlewares.protectedRoute);
 
+function sportWorkouts(activity) {
+  return (req, res, next) => {
+    const { _id } = req.session.currentUser;
+    Workout.find({ activity })
+      .then((workouts) => {
+        res.render('sport', {
+          userId: _id,
+          moment,
+          workouts,
+          activity,
+        });
+      })
+      .catch((error) => {
+        next(error);
+      });
+  };
+}
 /* GET sport page. */
-router.get('/basketball', (req, res, next) => {
-  Workout.find({ activity: "Basketball"})
-    .then((workouts) => {
-      res.render('sport', {
-        workouts,
-      });
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-router.get('/biking', (req, res, next) => {
-  Workout.find({ activity: "Biking"})
-    .then((workouts) => {
-      res.render('sport', {
-        workouts,
-      });
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-router.get('/football', (req, res, next) => {
-  Workout.find({ activity: "Football"})
-    .then((workouts) => {
-      res.render('sport', {
-        workouts,
-      });
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-router.get('/running', (req, res, next) => {
-  Workout.find({ activity: "Running"})
-    .then((workouts) => {
-      res.render('sport', {
-        workouts,
-      });
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-router.get('/tennis', (req, res, next) => {
-  Workout.find({ activity: "Tennis"})
-    .then((workouts) => {
-      res.render('sport', {
-        workouts,
-      });
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-router.get('/others', (req, res, next) => {
-  Workout.find({ activity: "Others"})
-    .then((workouts) => {
-      res.render('sport', {
-        workouts,
-      });
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
+router.get('/basketball', sportWorkouts('Basketball'));
+router.get('/biking', sportWorkouts('Biking'));
+router.get('/football', sportWorkouts('Football'));
+router.get('/running', sportWorkouts('Running'));
+router.get('/tennis', sportWorkouts('Tennis'));
+router.get('/others', sportWorkouts('Others'));
+
 module.exports = router;

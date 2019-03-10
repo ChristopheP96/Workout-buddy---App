@@ -1,18 +1,16 @@
+<h1><%= workout.activity %> details</h1>
 <div class="container">
-    <h1><%= workout.activity %> details</h1>
-
     <img src="<%= workout.creatorPicture %>" alt="Smiley face of the creator" height="100" width="100">
-    <ul>
-        <li>Location: <%= workout.meetingpoint %></li>
-        <li>Date: <%= workout.date %></li>
-        <li>Time: <%= workout.duration %></li>
-        <li>Attendees:
-        <% workout.attendees.forEach((attendee) => { %>
-            <% attendee.username %>
-        <% })%>
-        </li>
-        <li>Comments: <%= workout.comment %></li>
-    </ul>
+    <p>Location: <%= workout.meetingpoint %></p>
+    <p>Date: <%= moment(workout.dateTime).format('MMMM Do YYYY') %></p>
+    <p>Time: <%= moment(workout.dateTime).format('h:mm:ss a') %></p>
+    <p>Duration: <%= workout.duration %></p>
+    <p>Attendees:
+    <% workout.attendees.forEach((attendee) => { %>
+        <% attendee.username %>
+    <% })%>
+    </i>
+    <p>Comments: <%= workout.comment %></p>
 
     <a href="/user/workouts">Back to workouts</a>
 </div>

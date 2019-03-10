@@ -1,13 +1,27 @@
-<div class="container">    
+<div class="container">
+<h1><%= activity %> workouts</h1>
+<div class="row">
     <% workouts.forEach((workout) => { %>
-        <h1> <%= workout.activity %> workouts availables </h1>
-        <p><%= workout.meetingpoint %></p>
-        <p><%= workout.date %></p>
-        <p><%= workout.duration %></p>
-        <form action="/user/workouts/<%= workout._id %>/join" method="post">
-            <input type="submit" value="Join">
-        </form>
+    <div class="col-md-3">    
+    <ul class="list-container mb-3">  
+        <div class="list-content">      
+            <li>Location: <%= workout.meetingpoint %></li>
+            <li>Date: <%= moment(workout.dateTime).format('MMMM Do YYYY') %></li>
+            <li>Time: <%= moment(workout.dateTime).format('h:mm:ss a') %></li>
+            <li>Duration: <%= workout.duration %></li>
+        
+        <div class="join-button">    
+            <form action="/user/workouts/<%= workout._id %>/join" method="post">
+              <input type="submit" class="btn btn-success" value="Join">
+            </form>
+        </div>
+        </div>
+    </ul>
+    </div>
     <% })%>
 </div>
 <br>
 <a href="/user/workouts/new">Create a new Workout</a>
+<br>
+<a href="/user/">Back to Home</a>
+<div>

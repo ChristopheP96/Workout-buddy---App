@@ -1,3 +1,7 @@
+.join-button {
+    float: right;
+    padding: 5px;
+}
 .links {
     margin-bottom: 15px;
 }
@@ -15,6 +19,36 @@
 .icon {
     font-family:'FontAwesome';
     color: whitesmoke;
+}
+
+.list-content {
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 2.15rem;
+    cursor: pointer;
+    display: grid;
+    float: left;
+    margin-bottom: 15px;
+    max-width: 300px;
+    min-height: 20px;
+    position: relative;
+    padding: 10px;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+    z-index: 0;
+}
+
+.list-container {
+    flex: 1 1 auto;
+    margin-bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 4px;
+    padding: 0 4px;
+    z-index: 1;
+    min-height: 0;
+    list-style-type: none;
 }
 
 .profile-unit {
@@ -38,6 +72,17 @@
 
 .profile-content {
  font-size: 2em;
+}
+
+.sports-container {
+    width: 450px;
+    margin: 0 auto;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    vertical-align: top;
+    white-space: nowrap;
 }
 
 .user-name, .profile-title, .profile-explanation {
