@@ -1,3 +1,12 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    border-radius: 1.25rem;
+}
+
 .font {
     font-weight: normal;
 }
@@ -27,6 +36,10 @@
     height: 60px;
     background-color: #593196;
 }
+
+.nav-height {
+    line-height: 0.5;
+}
 .image {
     height: 60px;
     width: 60px;
@@ -52,7 +65,6 @@
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     margin-bottom: 15px;
-    max-width: 315px;
     min-height: 20px;
     position: relative;
     padding: 25px;
