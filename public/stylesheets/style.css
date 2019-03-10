@@ -1,6 +1,10 @@
 .font {
     font-weight: normal;
 }
+.home {
+    background-color: #593196;
+    color: whitesmoke;
+}
 .icon {
     font-family:'FontAwesome';
     color: whitesmoke;
