@@ -1,26 +1,27 @@
 <div class="container">
 <form id="form" action="/signup" method="POST">
-    <label class="signin-form" for="name">Name</label><br>
-    <input type="text" name="name"
+    <label class="signin-form" for="name"></label><br>
+    <input type="text" name="name" class="rounded"
       placeholder="Name">
     <br>  
-    <label class="signin-form" for="username">Username</label><br>
-    <input type="text" name="username"
+    <label class="signin-form" for="username"></label><br>
+    <input type="text" name="username" class="rounded"
       placeholder="Username">
     <br>  
-    <label class="signin-form" for="email">Email</label><br>
-    <input type="email" name="email"
+    <label class="signin-form" for="email"></label><br>
+    <input type="email" name="email" class="rounded"
       placeholder="email">
     <br>  
-    <label class="signin-form" for="password">Password</label><br>
-    <input type="password" name="password"
-      placeholder="*****">
-    <br>  
-    <button class="btn btn-link" type="submit">Create account</button>
-    <% if (errorMessage) { %>
-     
-        <p><%= errorMessage %></p>
-         
-       <% } %>
+    <label class="signin-form" for="password"></label><br>
+    <input type="password" name="password" class="rounded"
+      placeholder="*****"><br>
+    <div class="links">
+      <button class="link" type="submit" >Create account</button>
+      <% if (errorMessage) { %>
+      
+          <p><%= errorMessage %></p>
+          
+        <% } %>
+    </div>
 </form>
 </div>
