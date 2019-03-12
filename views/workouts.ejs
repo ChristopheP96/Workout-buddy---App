@@ -13,16 +13,18 @@
           <p>Comments: <span class="font"><%= workout.comment %></span></p>
         </div>  
       </div>
-      <div class="buttons workout-content">    
-        <a class="btn btn-info button" href="/user/workouts/<%= workout._id %>/update">
-        Update
-        </a>
-        <form action="/user/workouts/<%= workout._id %>/delete" method="post">
-          <input type="submit" class="btn btn-danger button" value="Delete">
-        </form>
-        <br>
-      </div>
-    </div>  
+      <% if (workout.attendees[0].toHexString() === _id) { %>
+        <div class="buttons workout-content">    
+            <a class="btn btn-info button" href="/user/workouts/<%= workout._id %>/update">
+            Update
+            </a>
+            <form action="/user/workouts/<%= workout._id %>/delete" method="post">
+              <input type="submit" class="btn btn-danger button" value="Delete">
+            </form>
+            <br>
+          </div>
+        </div> 
+        <% } %>
   <% })%>
   </div>
   

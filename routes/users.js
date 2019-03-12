@@ -54,9 +54,11 @@ router.post('/workouts/new', (req, res, next) => {
 /* GET users workouts listing. */
 router.get('/workouts', (req, res, next) => {
   // eslint-disable-next-line no-underscore-dangle
+  const { _id } = req.session.currentUser;
+  console.log(typeof _id);
   Workout.find({ attendees: req.session.currentUser._id })
     .then((workouts) => {
-      res.render('workouts', { moment, workouts });
+      res.render('workouts', { moment, workouts, _id });
     })
     .catch((error) => {
       next(error);
