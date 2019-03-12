@@ -214,4 +214,4 @@ comment: String
 
 ### Slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/14S4fZwWkakL8EZazqDTohukCBkjoMIS0bo6X3-uuGe4/edit?usp=sharing)
