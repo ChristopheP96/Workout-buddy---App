@@ -210,7 +210,7 @@ comment: String
 
 [Repository Link](https://github.com/IONDO/Workout-buddy---App/tree/master)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://workoutbuddy-demo.herokuapp.com/)
 
 ### Slides
 
