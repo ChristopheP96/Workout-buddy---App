@@ -126,9 +126,16 @@ router.post('/workouts/:id/delete', (req, res, next) => {
 /* Join a workout */
 
 router.post('/workouts/:id/join', (req, res, next) => {
-  const attendeId = req.session.currentUser._id;
+  const attendeeId = req.session.currentUser._id;
   const { id } = req.params;
-  Workout.findByIdAndUpdate(id, { $push: { attendees: attendeId } })
+  Workout.findById(id)
+    .then((workout) => {
+      // check is attendees alreadt included
+      if (!workout.attendees.map(w => w.toHexString()).includes(attendeeId)) {
+        workout.attendees.push(attendeeId);
+        workout.save();
+      }
+    })
     .then(() => {
       res.redirect('/user/workouts');
     })
