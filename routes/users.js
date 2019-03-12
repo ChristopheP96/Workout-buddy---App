@@ -137,7 +137,7 @@ router.post('/workouts/:id/join', (req, res, next) => {
       }
     })
     .then(() => {
-      res.redirect('/user/workouts');
+      res.redirect('/user/');
     })
     .catch((error) => {
       next(error);
