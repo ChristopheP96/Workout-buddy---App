@@ -165,3 +165,11 @@
 .workout-content {
     margin-bottom: 20px;
 }
+
+.navigation-barop {
+    margin-bottom: 15px;
+}
+
+.mb4:before {
+    background: rgba(0,0,255, 0.5);
+}
