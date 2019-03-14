@@ -1,0 +1,33 @@
+<div class="container">
+<h1><%= activity %> workouts</h1>
+<div class="row">
+    <% workouts.forEach((workout) => { %>
+    <div class="col-md-3">    
+    <ul class="list-container mb-3">  
+        <div class="list-content">      
+            <li>Location: <span class="font"> <%= workout.meetingpoint %></span></li>
+            <li>Date: <span class="font"><%= moment(workout.dateTime).format('MMMM Do YYYY') %></span></li>
+            <li>Time: <span class="font"><%= moment(workout.dateTime).format('h:mm:ss a') %></span></li>
+            <li>Duration: <span class="font"><%= workout.duration %> min</span></li>
+            <li>Attendees: <span class="font"><%= workout.attendees.length %> </span></li>
+        
+            <% if (ownerPicturesById[workout.attendees[0]]) { %>
+            <div>
+                <img class="image" src="/<%= ownerPicturesById[workout.attendees[0]] %>">
+            </div>
+            <% } %>
+        <div class="join-button">    
+            <form action="/user/workouts/<%= workout._id %>/join" method="post">
+              <input type="submit" class="btn btn-success" value="Join">
+            </form>
+        </div>
+        </div>
+    </ul>
+    </div>
+    <% })%>
+</div>
+<br>
+<a type="button" class="btn btn-primary" href="/user/workouts/new">Create a new Workout</a>
+<br>
+<a type="button" class="btn home" href="/user/">Back to Home</a>
+<div>

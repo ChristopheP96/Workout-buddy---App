@@ -1,0 +1,24 @@
+<div class="container">
+<h2>Update <%= workout.activity %> workout</h2>
+<form action="/user/workouts/<%= workout._id %>/update" method="post">
+    <label for="activity">activity</label><br>
+    <input type="text" name="activity" id="activity" value="<%= workout.activity %>">
+    <br>
+    <label for="meetingpoint">Meeting point</label><br>
+    <input type="text" name="meetingpoint" id="meetingpoint" value="<%= workout.meetingpoint %>">
+    <br>
+    <label for="date">Date</label><br>
+    <input type="date" name="date" id="date" value="<%= workout.date %>">
+    <br>
+    <label for="timeframe">Duration </label><br>
+    <input type="time" name="duration" id="duration" value="<%= workout.duration %>">
+    <br>
+    <label for="comment">Comment</label><br>
+    <textarea name="comment" id="comment" value="<%= workout.comment %>">
+    </textarea>  
+    <br>
+  <input type="submit" value="Update">
+</form>
+<br>
+<a href="/user/workouts">Back to workouts</a>
+</div>
