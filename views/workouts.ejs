@@ -11,6 +11,7 @@
           <p>Time: <span class="font"><%= moment(workout.dateTime).format('h:mm:ss a') %></span></p>
           <p>Duration: <span class="font"><%= workout.duration %></span></p>
           <p>Comments: <span class="font"><%= workout.comment %></span></p>
+          <p>Attendees: <span class="font"><%= workout.attendees.length %> </span></p>
         </div>  
       </div>
       <% if (workout.attendees[0].toHexString() === _id) { %>

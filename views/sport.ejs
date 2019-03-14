@@ -10,12 +10,13 @@
             <li>Time: <span class="font"><%= moment(workout.dateTime).format('h:mm:ss a') %></span></li>
             <li>Duration: <span class="font"><%= workout.duration %> min</span></li>
             <li>Attendees: <span class="font"><%= workout.attendees.length %> </span></li>
-        
+    
             <% if (ownerPicturesById[workout.attendees[0]]) { %>
             <div>
                 <img class="image" src="/<%= ownerPicturesById[workout.attendees[0]] %>">
             </div>
             <% } %>
+            <% workout.attendees.includes(attendeeId) %>
             <% if (!workout.attendees.includes(attendeeId)) { %>
                 <div class="join-button">    
                         <form action="/user/workouts/<%= workout._id %>/join" method="post">

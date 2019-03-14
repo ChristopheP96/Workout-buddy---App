@@ -61,21 +61,22 @@ router.post('/signup', (req, res, next) => {
         res.render('signup', {
           errorMessage: 'The username already exists!',
         });
-        return;
+      } else {
+        User.create({
+          name,
+          email,
+          username,
+          password: hashPass,
+          picture: defaultPicture,
+        })
+          .then((userCreated) => {
+            req.session.currentUser = userCreated;
+            res.redirect('/user');
+          })
+          .catch((error) => {
+            next(error);
+          });
       }
-    });
-  User.create({
-    name,
-    email,
-    username,
-    password: hashPass,
-    picture: defaultPicture,
-  })
-    .then(() => {
-      res.redirect('/user');
-    })
-    .catch((error) => {
-      next(error);
     });
 });
 
