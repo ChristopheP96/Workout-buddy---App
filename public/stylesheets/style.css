@@ -165,3 +165,95 @@
 .workout-content {
     margin-bottom: 20px;
 }
+
+.navigation-barop {
+    margin-bottom: 15px;
+}
+
+.mb4:before {
+    background: rgba(0,0,255, 0.5);
+}
+
+.tint {
+  position: relative;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  box-shadow: rgba(10,10,10,.2) 3px 5px 5px;
+}
+
+.tint:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,255,255, 0.5);
+    transition: all .3s linear;
+    width: 100%;
+    height: auto;
+}
+
+.tint:hover:before { background: none; }
+
+.t2:before { background: rgba(0,0,255, 0.5); }
+.t3:before { background: rgba(255,0,0, 0.5); }
+.t4:before { background: rgba(0,255,0, 0.5); }
+.t5:before { background: rgba(255,0,240, 0.5); }
+.t6:before { background: rgba(255,102,0, 0.6); }
+
+.sport-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.home-sports{
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    
+    @media (min-width: 52em) {
+      grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+    }
+}
+
+.sport-item {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}  
+
+figcaption{
+    position: absolute;
+    top: 5em;
+    bottom: 5em;
+    right: 5em;
+    left: 5em;
+    color:  #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity ease-in-out 300ms;
+}
+
+figcaption:hover { 
+    opacity: 1;
+}
+
+.sport-name {
+    text-transform: uppercase;
+    line-height: 1;
+    text-align: center;
+}
+
+.wrap {
+    padding-left: 3em;
+    padding-right: 3em;
+}
