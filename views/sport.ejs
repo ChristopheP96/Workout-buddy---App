@@ -16,11 +16,13 @@
                 <img class="image" src="/<%= ownerPicturesById[workout.attendees[0]] %>">
             </div>
             <% } %>
-        <div class="join-button">    
-            <form action="/user/workouts/<%= workout._id %>/join" method="post">
-              <input type="submit" class="btn btn-success" value="Join">
-            </form>
-        </div>
+            <% if (!workout.attendees.includes(attendeeId)) { %>
+                <div class="join-button">    
+                        <form action="/user/workouts/<%= workout._id %>/join" method="post">
+                          <input type="submit" class="btn btn-success" value="Join">
+                        </form>
+                    </div>
+                <% } %>
         </div>
     </ul>
     </div>
