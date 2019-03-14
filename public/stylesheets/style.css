@@ -165,3 +165,8 @@
 .workout-content {
     margin-bottom: 20px;
 }
+
+.home-center {
+    text-align: center;
+    margin: 35px auto;
+}
