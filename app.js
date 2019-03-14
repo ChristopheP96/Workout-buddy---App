@@ -13,9 +13,10 @@ const usersRouter = require('./routes/users');
 const profileRouter = require('./routes/profile');
 const sportsRouter = require('./routes/sports');
 
+require('dotenv').config();
 
-const databaseUrl = process.env.DATABASE_URL || 'mongodb://localhost:27017/WorkoutApp';
-mongoose.connect(databaseUrl, { useNewUrlParser: true })
+console.log(process.env.DATABASE_URL);
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
   .then(() => {
     console.log('connected');
   })
@@ -25,9 +26,7 @@ mongoose.connect(databaseUrl, { useNewUrlParser: true })
 
 const app = express();
 
-app.set('port', process.env.PORT || 3000);
-
-require('./env.js')(app);
+// require('./env.js')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,7 +41,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 app.use(session({
-  secret: 'WorkoutApp',
+  secret: process.env.SECRET,
   cookie: {
     maxAge: 24 * 60 * 60 * 1000,
   },
@@ -66,7 +65,7 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
