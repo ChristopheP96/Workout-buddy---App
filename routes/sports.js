@@ -19,6 +19,7 @@ function sportWorkouts(activity) {
           $in: ownerIds,
         },
       });
+      const attendeeId = req.session.currentUser._id; 
       const ownerPicturesById = {};
       owners.forEach((owner) => {
         ownerPicturesById[owner._id] = owner.picture;
@@ -28,6 +29,7 @@ function sportWorkouts(activity) {
         workouts,
         ownerPicturesById,
         activity,
+        attendeeId,
       });
     } catch (error) {
       next(error);
