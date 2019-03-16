@@ -51,7 +51,7 @@ router.post('/signup', (req, res, next) => {
   const hashPass = bcrypt.hashSync(password, salt);
   if (username === '' && password === '' && name === '' && email === '') {
     res.render('signup', {
-      errorMessage: 'All fields are required to sign up',
+      req.flash('error', 'All fields are required to sign up')
     });
     return;
   }

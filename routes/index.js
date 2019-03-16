@@ -11,7 +11,6 @@ router.get('/', (req, res, next) => {
 // login in front page
 router.post('/', (req, res, next) => {
   const { username, password } = req.body;
-
   User.findOne({ "username": username })
     .then((user) => {
       if (!user) {
