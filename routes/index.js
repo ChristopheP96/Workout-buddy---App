@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
   res.render('front', { errorMessage: undefined, layout: false });
 });
-
+// login in front page
 router.post('/', (req, res, next) => {
   const { username, password } = req.body;
 
@@ -38,7 +38,7 @@ router.post('/', (req, res, next) => {
 /* GET singup page. */
 
 router.get('/signup', (req, res, next) => {
-  res.render('signup', { errorMessage: undefined });
+  res.render('signup', { errorMessage: req.flash('error') });
 });
 
 router.post('/signup', (req, res, next) => {
@@ -77,44 +77,6 @@ router.post('/signup', (req, res, next) => {
             next(error);
           });
       }
-    });
-});
-
-/* GET login page. */
-router.get('/login', (req, res, next) => {
-  res.render('login', { errorMessage: undefined });
-});
-
-router.post('/login', (req, res, next) => {
-  const { username, password } = req.body;
-
-  if (username === '' || password === '') {
-    res.render('login', {
-      errorMessage: 'Please enter both, username and password to sign up.',
-    });
-    return;
-  }
-
-  User.findOne({ "username": username })
-    .then((user) => {
-      if (!user) {
-        res.render('login', {
-          errorMessage: 'The username or the password is incorrect.',
-        });
-        return;
-      }
-      if (bcrypt.compareSync(password, user.password)) {
-        // Save the login in the session!
-        req.session.currentUser = user;
-        res.redirect('/user');
-      } else {
-        res.render('login', {
-          errorMessage: 'The username or the password is incorrect.',
-        });
-      }
-    })
-    .catch((error) => {
-      next(error);
     });
 });
 

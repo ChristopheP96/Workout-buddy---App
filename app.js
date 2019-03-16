@@ -1,5 +1,5 @@
-const createError = require('http-errors');
 const express = require('express');
+const flash = require('flash');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
@@ -7,6 +7,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const { notifications } = require('./middlewares');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -24,6 +25,9 @@ mongoose.connect(databaseUrl, { useNewUrlParser: true })
   });
 
 const app = express();
+
+
+app.locals.title = 'workoutApp';
 
 app.set('port', process.env.PORT || 3000);
 
@@ -53,6 +57,12 @@ app.use(session({
     ttl: 24 * 60 * 60, // 1 day
   }),
 }));
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.currentUser;
+  next();
+});
+app.use(notifications);
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
