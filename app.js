@@ -73,8 +73,8 @@ app.use((req, res, next) => {
   res.status(404).render('404');
 });
 
-// error handler
-app.use((err, req, res) => {
+// catch 500 and forward to error handler
+app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

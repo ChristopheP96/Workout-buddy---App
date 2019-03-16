@@ -8,7 +8,7 @@ const workoutSchema = new Schema({
     ref: 'User',
   },
   activity: { type: String },
-  meetingpoint: { type: String, unique: true },
+  meetingpoint: { type: String },
   dateTime: { type: Date },
   duration: { type: Number },
   attendees: [{ type: Schema.ObjectId, ref: 'User' }],

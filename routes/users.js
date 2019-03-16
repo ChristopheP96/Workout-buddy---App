@@ -78,7 +78,7 @@ router.get('/workouts/:id', async (req, res, next) => {
 
 router.get('/workouts/:id/update', (req, res, next) => {
   const { id } = req.params;
-  Workout.findById(id)
+  Workout.findOne({ _id : id })
     .then((workout) => {
       res.render('update', {
         workout,
