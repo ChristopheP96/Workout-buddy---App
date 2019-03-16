@@ -14,9 +14,9 @@ const usersRouter = require('./routes/users');
 const profileRouter = require('./routes/profile');
 const sportsRouter = require('./routes/sports');
 
+require('dotenv').config();
 
-const databaseUrl = process.env.DATABASE_URL || 'mongodb://localhost:27017/WorkoutApp';
-mongoose.connect(databaseUrl, { useNewUrlParser: true })
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
   .then(() => {
     console.log('connected');
   })
