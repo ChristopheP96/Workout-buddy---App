@@ -45,7 +45,7 @@ router.post('/signup', (req, res, next) => {
   const {
     name, email, username, password,
   } = req.body;
-  const defaultPicture = '/uploads/default-picture.jpeg';
+  const defaultPicture = 'default-picture.jpg';
   const bcryptSalt = 10;
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);

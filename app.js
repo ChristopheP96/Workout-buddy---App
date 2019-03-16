@@ -1,4 +1,3 @@
-const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
@@ -21,12 +20,10 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
     console.log('connected');
   })
   .catch((error) => {
-    console.error(`cannot connect to mongodb at ${databaseUrl}`, error);
+    console.error(`cannot connect to mongodb at ${process.env.DATABASE_URL}`, error);
   });
 
 const app = express();
-
-// require('./env.js')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

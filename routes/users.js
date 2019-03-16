@@ -2,22 +2,16 @@ const express = require('express');
 const moment = require('moment');
 const Workout = require('../models/workout');
 const middlewares = require('../middlewares/index');
-
 const router = express.Router();
-
 router.use(middlewares.protectedRoute);
-
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('home');
 });
-
-
 /* GET new workout */
 router.get('/workouts/new', (req, res, next) => {
   res.render('new');
 });
-
 router.post('/workouts/new', (req, res, next) => {
   const { _id } = req.session.currentUser;
   const {
@@ -55,7 +49,6 @@ router.post('/workouts/new', (req, res, next) => {
 router.get('/workouts', (req, res, next) => {
   // eslint-disable-next-line no-underscore-dangle
   const { _id } = req.session.currentUser;
-  console.log(typeof _id);
   Workout.find({ attendees: req.session.currentUser._id })
     .then((workouts) => {
       res.render('workouts', { moment, workouts, _id });
@@ -64,9 +57,7 @@ router.get('/workouts', (req, res, next) => {
       next(error);
     });
 });
-
 /* GET see workout details */
-
 router.get('/workouts/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -76,7 +67,6 @@ router.get('/workouts/:id', async (req, res, next) => {
     next(error);
   }
 });
-
 router.get('/workouts/:id/update', (req, res, next) => {
   const { id } = req.params;
   Workout.findById(id)
@@ -89,7 +79,6 @@ router.get('/workouts/:id/update', (req, res, next) => {
       next(error);
     });
 });
-
 router.post('/workouts/:id/update', (req, res, next) => {
   const { id } = req.params;
   const {
@@ -113,7 +102,6 @@ router.post('/workouts/:id/update', (req, res, next) => {
       next(error);
     });
 });
-
 router.post('/workouts/:id/delete', (req, res, next) => {
   const { id } = req.params;
   Workout.findByIdAndDelete(id)
@@ -124,19 +112,51 @@ router.post('/workouts/:id/delete', (req, res, next) => {
       next(error);
     });
 });
-
 /* Join a workout */
-
 router.post('/workouts/:id/join', (req, res, next) => {
   const attendeeId = req.session.currentUser._id;
   const { id } = req.params;
   Workout.findById(id)
     .then((workout) => {
-      // check is attendees alreadt included
+      // check is attendees already included
       if (!workout.attendees.map(w => w.toHexString()).includes(attendeeId)) {
         workout.attendees.push(attendeeId);
         workout.save();
       }
+    })
+    .then(() => {
+      res.redirect('/user/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+router.post('/workouts/:id/join', (req, res, next) => {
+  const attendeeId = req.session.currentUser._id;
+  const { id } = req.params;
+  Workout.findById(id)
+    .then((workout) => {
+      // check is attendees already included
+      if (!workout.attendees.map(w => w.toHexString()).includes(attendeeId)) {
+        workout.attendees.push(attendeeId);
+        workout.save();
+      }
+    })
+    .then(() => {
+      res.redirect('/user/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+router.post('/workouts/:id/withdraw', (req, res, next) => {
+  const attendeeId = req.session.currentUser._id;
+  const { id } = req.params;
+  Workout.findById(id)
+    .then((workout) => {
+      // check is attendees already included
+      workout.attendees = workout.attendees.filter(w => w.toHexString() !== attendeeId);
+      workout.save();
     })
     .then(() => {
       res.redirect('/user/');
