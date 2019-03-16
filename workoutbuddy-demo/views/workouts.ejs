@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Workouts you are attending to</h1>
+  <div class="row">
+  <% workouts.forEach((workout) => { %>
+    <div class="col-md-4">  
+      <div class="list-container mb">
+        <div class="list-content">
+          <p>Activity: <span class="font"><%= workout.activity %></span></p>
+          <p>Location: <span class="font"><%= workout.meetingpoint %></span></p>
+          <p>Date: <span class="font"><%= moment(workout.dateTime).format('MMMM Do YYYY') %></span></p>
+          <p>Time: <span class="font"><%= moment(workout.dateTime).format('h:mm:ss a') %></span></p>
+          <p>Duration: <span class="font"><%= workout.duration %></span></p>
+          <p>Comments: <span class="font"><%= workout.comment %></span></p>
+        </div>  
+      </div>
+      <% if (workout.attendees[0].toHexString() === _id) { %>
+        <div class="buttons workout-content">    
+            <a class="btn btn-info button" href="/user/workouts/<%= workout._id %>/update">
+            Update
+            </a>
+            <form action="/user/workouts/<%= workout._id %>/delete" method="post">
+              <input type="submit" class="btn btn-danger button" value="Delete">
+            </form>
+            <br>
+          </div>
+        </div> 
+        <% } %>
+  <% })%>
+  </div>
+  
+</div>  
+<a href="/user/workouts/new">Create a new Workout</a>

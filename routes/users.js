@@ -2,22 +2,16 @@ const express = require('express');
 const moment = require('moment');
 const Workout = require('../models/workout');
 const middlewares = require('../middlewares/index');
-
 const router = express.Router();
-
 router.use(middlewares.protectedRoute);
-
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('home');
 });
-
-
 /* GET new workout */
 router.get('/workouts/new', (req, res, next) => {
   res.render('new');
 });
-
 router.post('/workouts/new', (req, res, next) => {
   const { _id } = req.session.currentUser;
   const {
@@ -63,9 +57,7 @@ router.get('/workouts', (req, res, next) => {
       next(error);
     });
 });
-
 /* GET see workout details */
-
 router.get('/workouts/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -75,7 +67,6 @@ router.get('/workouts/:id', async (req, res, next) => {
     next(error);
   }
 });
-
 router.get('/workouts/:id/update', (req, res, next) => {
   const { id } = req.params;
   Workout.findOne({ _id : id })
@@ -88,7 +79,6 @@ router.get('/workouts/:id/update', (req, res, next) => {
       next(error);
     });
 });
-
 router.post('/workouts/:id/update', (req, res, next) => {
   const { id } = req.params;
   const {
@@ -112,7 +102,6 @@ router.post('/workouts/:id/update', (req, res, next) => {
       next(error);
     });
 });
-
 router.post('/workouts/:id/delete', (req, res, next) => {
   const { id } = req.params;
   Workout.findByIdAndDelete(id)
@@ -123,9 +112,7 @@ router.post('/workouts/:id/delete', (req, res, next) => {
       next(error);
     });
 });
-
 /* Join a workout */
-
 router.post('/workouts/:id/join', (req, res, next) => {
   const attendeeId = req.session.currentUser._id;
   const { id } = req.params;
@@ -144,7 +131,6 @@ router.post('/workouts/:id/join', (req, res, next) => {
       next(error);
     });
 });
-
 router.post('/workouts/:id/join', (req, res, next) => {
   const attendeeId = req.session.currentUser._id;
   const { id } = req.params;

@@ -5,10 +5,8 @@ const Workout = require('../models/workout');
 const User = require('../models/user');
 const middlewares = require('../middlewares/index');
 
-
 const router = express.Router();
 router.use(middlewares.protectedRoute);
-
 function sportWorkouts(activity) {
   return async (req, res, next) => {
     try {
@@ -43,5 +41,4 @@ router.get('/football', sportWorkouts('Football'));
 router.get('/running', sportWorkouts('Running'));
 router.get('/tennis', sportWorkouts('Tennis'));
 router.get('/others', sportWorkouts('Others'));
-
 module.exports = router;

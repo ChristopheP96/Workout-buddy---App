@@ -9,7 +9,7 @@
 
   <div class="profile-unit shadow p-1 mb-4 rounded">
       <div class="profile-img">
-        <img class="rounded" src="<%= user.picture %>" alt="Smiley face" height="250em" width="250em">
+        <img class="rounded" src=" <%= user.picture %> " alt="Smiley face" height="250em" width="250em">
       </div>
       <div class="profile-text-container bg-light">
         <div class="user-name">
@@ -26,15 +26,17 @@
       </div>
   </div>
 
-    <div class=" links">
-      <a class="link" href="/profile/updateProfile">
-        Click here to update your profile
-      </a><br>
+    <div class=" profile-links-wrapper">
+      <div class="profile-links">
+        <div class="update-profile-link">
+          <a class="link " href="/profile/updateProfile">
+            Click here to update your profile
+          </a>
+        </div>
+        <form action="/profile/deleteProfile" method="post">
+          <input class="btn btn-danger" type="submit" value="Delete your profile permanently">
+        </form>
+      </div>
     </div>
-
-      <form action="/profile/deleteProfile" method="post">
-        <input class="btn btn-danger" type="submit" value="Delete your profile permanently">
-      </form>
-    
   
 </div>

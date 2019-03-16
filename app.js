@@ -16,6 +16,10 @@ const sportsRouter = require('./routes/sports');
 
 require('dotenv').config();
 
+<<<<<<< HEAD
+=======
+console.log(process.env.DATABASE_URL);
+>>>>>>> d334a0f5295680939f2fabd7337de736a59c1fa3
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
   .then(() => {
     console.log('connected');
@@ -26,11 +30,14 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 
 const app = express();
 
+<<<<<<< HEAD
 
 app.locals.title = 'workoutApp';
 
 app.set('port', process.env.PORT);
 
+=======
+>>>>>>> d334a0f5295680939f2fabd7337de736a59c1fa3
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -44,7 +51,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 app.use(session({
-  secret: 'WorkoutApp',
+  secret: process.env.SECRET,
   cookie: {
     maxAge: 24 * 60 * 60 * 1000,
   },
@@ -73,7 +80,11 @@ app.use((req, res, next) => {
   res.status(404).render('404');
 });
 
+<<<<<<< HEAD
 // catch 500 and forward to error handler
+=======
+// error handler
+>>>>>>> d334a0f5295680939f2fabd7337de736a59c1fa3
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

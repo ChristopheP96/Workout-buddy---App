@@ -1,0 +1,54 @@
+<div class="container">
+<h1>Create a new workout</h1>
+
+  <form action="/user/workouts/new" method="post">
+    <div class="uncentered-new-worktout">
+      <div class="form-group">
+        <label for="activity">Activity</label><br>
+        <select class="custom-select d-block w-100" name="activity" id="activity">
+          <option value="">Choose...</option>
+          <option value="Running"><b>Running</b></option>
+          <option value="Biking"><b>Biking</b></option>
+          <option value="Volleyball"><b>Volleyball</b></option>
+          <option value="Football"><b>Football</b></option>
+          <option value="Basketball"><b>Basketball</b></option>
+          <option value="Tennis"><b>Paddel</b></option>
+          <option value="Others"><b>Others</b></option>
+        </select>
+      </div>
+        <br>
+      <div class="form-group">
+        <label for="meetingpoint">Meeting point</label><br>
+        <input class="form-control" type="text" name="meetingpoint" id="meetingpoint" placeholder="Address">
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="date">Date</label><br>
+          <input class="form-control" type="date" name="date" id="date">
+        </div>
+          <br>
+        <div class="col-md-6 mb-3">
+          <label for="time">Time</label><br>
+          <input class="form-control" id="time" type="time" name="time" value="00:00">
+        </div> 
+          <br>
+        <div class="col-md-6 mb-3">
+          <label for="duration">Duration </label><br>
+          <select class="form-control" name="duration" id="duration">
+              <option value="60" selected="selected"><b>1h</b></option>
+              <option value="30"><b>30m</b></option>
+              <option value="90"><b>1h 30m</b></option>
+              <option value="120"><b>2h</b></option>
+              <option value="180"><b>3h</b></option>
+              <option value="240"><b>4h</b></option>
+          </select>
+        </div>  
+      </div>
+        <br>
+        <label for="comment">Comment</label><br>
+        <textarea name="comment" rows="5" id="comment"></textarea>
+        <br>
+        <input type="submit" value="create">
+    </div>
+  </form>
+</div>
