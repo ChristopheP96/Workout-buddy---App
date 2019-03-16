@@ -131,11 +131,46 @@ router.post('/workouts/:id/join', (req, res, next) => {
   const { id } = req.params;
   Workout.findById(id)
     .then((workout) => {
-      // check is attendees alreadt included
+      // check is attendees already included
       if (!workout.attendees.map(w => w.toHexString()).includes(attendeeId)) {
         workout.attendees.push(attendeeId);
         workout.save();
       }
+    })
+    .then(() => {
+      res.redirect('/user/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+router.post('/workouts/:id/join', (req, res, next) => {
+  const attendeeId = req.session.currentUser._id;
+  const { id } = req.params;
+  Workout.findById(id)
+    .then((workout) => {
+      // check is attendees already included
+      if (!workout.attendees.map(w => w.toHexString()).includes(attendeeId)) {
+        workout.attendees.push(attendeeId);
+        workout.save();
+      }
+    })
+    .then(() => {
+      res.redirect('/user/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+router.post('/workouts/:id/withdraw', (req, res, next) => {
+  const attendeeId = req.session.currentUser._id;
+  const { id } = req.params;
+  Workout.findById(id)
+    .then((workout) => {
+      // check is attendees already included
+      workout.attendees = workout.attendees.filter(w => w.toHexString() !== attendeeId);
+      workout.save();
     })
     .then(() => {
       res.redirect('/user/');

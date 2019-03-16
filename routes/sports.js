@@ -19,8 +19,7 @@ function sportWorkouts(activity) {
           $in: ownerIds,
         },
       });
-      const attendeeId = req.session.currentUser._id;;
-      console.log(attendeeId) 
+      const attendeeId = req.session.currentUser._id;
       const ownerPicturesById = {};
       owners.forEach((owner) => {
         ownerPicturesById[owner._id] = owner.picture;

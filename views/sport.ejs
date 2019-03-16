@@ -16,14 +16,19 @@
                 <img class="image" src="/<%= ownerPicturesById[workout.attendees[0]] %>">
             </div>
             <% } %>
-            <% workout.attendees.includes(attendeeId) %>
-            <% if (!workout.attendees.includes(attendeeId)) { %>
+            <% if (!workout.attendees.map(id => id.toHexString()).includes(attendeeId)) { %>
                 <div class="join-button">    
                         <form action="/user/workouts/<%= workout._id %>/join" method="post">
                           <input type="submit" class="btn btn-success" value="Join">
                         </form>
                     </div>
-                <% } %>
+                <% } else { %>
+                    <div class="join-button">    
+                            <form action="/user/workouts/<%= workout._id %>/Withdraw" method="post">
+                              <input type="submit" class="btn btn-danger" value="Withdraw">
+                            </form>
+                        </div>
+                 <% } %>    
         </div>
     </ul>
     </div>
