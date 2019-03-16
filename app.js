@@ -21,7 +21,7 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
     console.log('connected');
   })
   .catch((error) => {
-    console.error(`cannot connect to mongodb at ${databaseUrl}`, error);
+    console.error(`cannot connect to mongodb at ${process.env.DATABASE_URL}`, error);
   });
 
 const app = express();
@@ -29,9 +29,7 @@ const app = express();
 
 app.locals.title = 'workoutApp';
 
-app.set('port', process.env.PORT || 3000);
-
-require('./env.js')(app);
+app.set('port', process.env.PORT);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
