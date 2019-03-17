@@ -106,7 +106,7 @@ router.post('/workouts/:id/delete', (req, res, next) => {
   const { id } = req.params;
   Workout.findByIdAndDelete(id)
     .then(() => {
-      res.redirect('/user/workouts');
+      res.redirect('/user/workouts/');
     })
     .catch((error) => {
       next(error);
@@ -125,30 +125,14 @@ router.post('/workouts/:id/join', (req, res, next) => {
       }
     })
     .then(() => {
-      res.redirect('/user/');
+      req.flash('success', 'You have succesfully join this workout!!');
+      res.redirect('/user/workouts/');
     })
     .catch((error) => {
       next(error);
     });
 });
-router.post('/workouts/:id/join', (req, res, next) => {
-  const attendeeId = req.session.currentUser._id;
-  const { id } = req.params;
-  Workout.findById(id)
-    .then((workout) => {
-      // check is attendees already included
-      if (!workout.attendees.map(w => w.toHexString()).includes(attendeeId)) {
-        workout.attendees.push(attendeeId);
-        workout.save();
-      }
-    })
-    .then(() => {
-      res.redirect('/user/workouts');
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
+
 router.post('/workouts/:id/withdraw', (req, res, next) => {
   const attendeeId = req.session.currentUser._id;
   const { id } = req.params;
@@ -159,7 +143,8 @@ router.post('/workouts/:id/withdraw', (req, res, next) => {
       workout.save();
     })
     .then(() => {
-      res.redirect('/user/');
+      req.flash('success', 'You have succesfully withdraw from this workout!!');
+      res.redirect('/user/workouts/');
     })
     .catch((error) => {
       next(error);
