@@ -1,3 +1,15 @@
+.basketball {
+    background-image: url("/images/basketball.jpeg");
+    background-position: center;
+    background-size: cover;
+}
+
+.biking {
+    background-image: url("/images/biking.jpeg");
+    background-position: center;
+    background-size: cover;
+
+}
 .buttons {
     display: flex;
     justify-content: center;
@@ -7,16 +19,70 @@
     border-radius: 1.25rem;
 }
 
+.error500 {
+    text-align: center;
+}
+.error500-img {
+    max-width:100%;
+    max-height:100%;
+    border-radius: 15px;
+}
+
+.error500-content {
+    max-width:100%;
+    max-height:100%;
+}
+
+.error500-title {
+    padding-bottom: 2em;
+}
+
 .font {
     font-weight: normal;
+}
+
+.football {
+    background-image: url("/images/football.jpg");
+    background-position: center;
+    background-size: cover;
+
+
 }
 .home {
     background-color: #593196;
     color: whitesmoke;
 }
+
+.home-center {
+    text-align: center;
+    margin: 35px auto;
+}
 .icon {
     font-family:'FontAwesome';
     color: whitesmoke;
+}
+
+.icons {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 auto 10px;
+}
+
+.image {
+    height: 60px;
+    width: 60px;
+    float: right;
+    margin: 5px;
+    position: absolute;
+    top: 110px;
+    right: 10px;
+}
+
+.image-container {
+    float: right;
+    margin: 0 -2px 0 0;
 }
 .join-button {
     float: right;
@@ -33,28 +99,30 @@
     color: whitesmoke;
 }
 
-.nav {
-    height: 60px;
-    background-color: #593196;
+.list-a {
+    text-decoration: none;
+    padding: 0 30px;
+    display: block;
+    width: 100%;
 }
 
-.nav-height {
-    line-height: 0.5;
+.list-a .icons .fas {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 34px;
+    transition: 0.5s;
+    color: whitesmoke;
 }
-.image {
-    height: 60px;
-    width: 60px;
-    float: right;
-    margin: 5px;
-    position: absolute;
-    top: 110px;
-    right: 10px;
+.list-a:hover .icons .fas {
+    transition: all 200ms ease;
+    
 }
 
-.image-container {
-    float: right;
-    margin: 0 -2px 0 0;
-}
+.list-a:hover .icons .fas:last-child {
+    color:#D406A7;
+    
+} 
 
 .list-content {
     background-color: #fff;
@@ -87,14 +155,21 @@
     list-style-type: none;
 }
 
-.profile-unit {
-   width: 17em;
-   margin: 0 auto;
+.nav {
+    height: 60px;
+    background-color: #593196;
 }
 
-.profile-text-container {
-    width: 95%;
-    margin: 0 auto;
+.nav-height {
+    line-height: 0.5;
+}
+
+.navigation-barop {
+    margin-bottom: 15px;
+}
+
+.profile-content {
+    font-size: 2em;
 }
 
 .profile-img {
@@ -102,12 +177,26 @@
     margin: 0 auto;
 }
 
+.profile-links-wrapper {
+    text-align: center;
+}
+
+.profile-links {
+    display: inline-block;
+}
+
+.profile-text-container {
+    width: 95%;
+    margin: 0 auto;
+}
+
 .profile-titles {
     font-size: 1em;
 }
 
-.profile-content {
- font-size: 2em;
+.profile-unit {
+   width: 17em;
+   margin: 0 auto;
 }
 
 .sports-container {
@@ -121,91 +210,19 @@
     white-space: nowrap;
 }
 
+.update-profile-link {
+    padding-bottom: 6em;
+}
+
 .user-name, .profile-title, .profile-explanation {
     padding-bottom: 1em;
 }
-.icon {
-    font-family:'FontAwesome';
-    color: black;
-}
-
-.list-a {
-    text-decoration: none;
-    padding: 0 30px;
-    display: block;
-    width: 100%;
-}
-
-.icons {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    overflow: hidden;
-    margin: 0 auto 10px;
-}
-
-.list-a .icons .fas {
-    width: 100%;
-    height: 100%;
-    line-height: 40px;
-    font-size: 34px;
-    transition: 0.5s;
-    color: whitesmoke;
-}
-.list-a:hover .icons .fas {
-    transition: all 200ms ease;
-    
-}
-
-.list-a:hover .icons .fas:last-child {
-    color:#D406A7;
-    
-} 
 
 .workout-content {
     margin-bottom: 20px;
 }
 
-.navigation-barop {
-    margin-bottom: 15px;
-}
-
 .wrap {
     padding-left: 3em;
     padding-right: 3em;
-}
-
-.error500 {
-    text-align: center;
-}
-.error500-img {
-    max-width:100%;
-    max-height:100%;
-    border-radius: 15px;
-}
-
-.error500-content {
-    max-width:100%;
-    max-height:100%;
-}
-
-.error500-title {
-    padding-bottom: 2em;
-}
-
-.profile-links-wrapper {
-    text-align: center;
-}
-
-.profile-links {
-    display: inline-block;
-}
-
-.update-profile-link {
-    padding-bottom: 6em;
-}
-
-.home-center {
-    text-align: center;
-    margin: 35px auto;
 }

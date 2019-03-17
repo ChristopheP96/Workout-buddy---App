@@ -14,6 +14,13 @@
           <p>Attendees: <span class="font"><%= workout.attendees.length %> </span></p>
         </div>  
       </div>
+      <% if (workout.attendees.indexOf(_id) !== 0) ) { %>
+        <div>    
+            <form action="/user/workouts/<%= workout._id %>/withdraw" method="post">
+              <input type="submit" class="btn btn-danger" value="Withdraw">
+            </form>
+        </div>
+        <% } %>
       <% if (workout.attendees[0].toHexString() === _id) { %>
         <div class="buttons workout-content">    
             <a class="btn btn-info button" href="/user/workouts/<%= workout._id %>/update">
@@ -26,8 +33,6 @@
           </div>
         </div> 
         <% } %>
-  <% })%>
-  </div>
-  
-</div>  
+      </div>     
+  <% })%> 
 <a href="/user/workouts/new">Create a new Workout</a>
