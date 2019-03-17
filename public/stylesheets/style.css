@@ -19,6 +19,10 @@
     border-radius: 1.25rem;
 }
 
+.widthdraw {
+    text-align: center;
+}
+
 .error500 {
     text-align: center;
 }
