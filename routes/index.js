@@ -6,27 +6,20 @@ const router = express.Router();
 
 /* GET front page. */
 router.get('/', (req, res, next) => {
-  res.render('front', { errorMessage: undefined, layout: false });
+  res.render('front', { layout: false });
 });
 // login in front page
 router.post('/', (req, res, next) => {
   const { username, password } = req.body;
-  User.findOne({ "username": username })
+  User.findOne({ username })
     .then((user) => {
-      if (!user) {
-        res.render('front', {
-          errorMessage: 'The username or the password is incorrect.',
-        });
-        return;
-      }
-      if (bcrypt.compareSync(password, user.password)) {
+      if (user && bcrypt.compareSync(password, user.password)) {
         // Save the login in the session!
         req.session.currentUser = user;
         res.redirect('/user');
       } else {
-        res.render('front', {
-          errorMessage: 'The username or the password is incorrect.',
-        });
+        req.flash('danger', 'The username or the password is incorrect.');
+        res.redirect('/');
       }
     })
     .catch((error) => {
@@ -37,36 +30,31 @@ router.post('/', (req, res, next) => {
 /* GET singup page. */
 
 router.get('/signup', (req, res, next) => {
-  res.render('signup', { errorMessage: req.flash('error') });
+  res.render('signup');
 });
 
 router.post('/signup', (req, res, next) => {
   const {
     name, email, username, password,
   } = req.body;
-  const defaultPicture = 'default-picture.jpg';
   const bcryptSalt = 10;
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
-  if (username === '' && password === '' && name === '' && email === '') {
-    res.render('signup', {
-      errorMessage: 'All fields are required to sign up',
-    });
-    return;
+  if (username === '' || password === '' || name === '' || email === '') {
+    req.flash('danger', 'All fields are required to sign up');
+    res.redirect('/signup');
   }
-  User.findOne({ "username": username })
+  User.findOne({ username })
     .then((user) => {
       if (user !== null) {
-        res.render('signup', {
-          errorMessage: 'The username already exists!',
-        });
+        req.flash('danger', 'The username already exists!');
+        res.redirect('/signup');
       } else {
         User.create({
           name,
           email,
           username,
           password: hashPass,
-          picture: defaultPicture,
         })
           .then((userCreated) => {
             req.session.currentUser = userCreated;
@@ -80,7 +68,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/logout', (req, res, next) => {
-  req.session.destroy((err) => {
+  req.session.destroy(() => {
     res.redirect('/user');
   });
 });

@@ -38,7 +38,7 @@ router.post('/', (req, res, next) => {
 /* GET singup page. */
 
 router.get('/signup', (req, res, next) => {
-  res.render('signup', { errorMessage: undefined });
+  res.render('signup');
 });
 
 router.post('/signup', (req, res, next) => {
@@ -50,18 +50,16 @@ router.post('/signup', (req, res, next) => {
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
   if (username === '' && password === '' && name === '' && email === '') {
-    res.render('signup', {
-      req.flash('error', 'All fields are required to sign up')
-    });
+    req.flash('error', 'All fields are required to sign up');
+    res.render('signup');
     return;
   }
-  User.findOne({ "username": username })
+  User.findOne({ username })
     .then((user) => {
       if (user !== null) {
         res.render('signup', {
           errorMessage: 'The username already exists!',
         });
-        return;
       }
     });
   User.create({
@@ -81,7 +79,7 @@ router.post('/signup', (req, res, next) => {
 
 /* GET login page. */
 router.get('/login', (req, res, next) => {
-  res.render('login', { errorMessage: undefined });
+  res.render('login');
 });
 
 router.post('/login', (req, res, next) => {
@@ -94,7 +92,7 @@ router.post('/login', (req, res, next) => {
     return;
   }
 
-  User.findOne({ "username": username })
+  User.findOne({ username })
     .then((user) => {
       if (!user) {
         res.render('login', {
@@ -118,7 +116,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/logout', (req, res, next) => {
-  req.session.destroy((err) => {
+  req.session.destroy(() => {
     res.redirect('/user');
   });
 });
