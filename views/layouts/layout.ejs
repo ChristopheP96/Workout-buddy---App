@@ -15,18 +15,16 @@
     crossorigin="anonymous">
   <title>Workout Buddies</title>
 </head>
-
 <body class="container-fluid home-center">
-  <div class="navigation-bar">
-    <nav class="navbar navbar-dark navbar-expand-sm  nav mb-4 fixed-top">
+    <nav class="navbar navbar-dark navbar-expand-sm nav mb-4 fixed-top">
       <a class="navbar-brand" href="#">Workout Buddy</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse nav-height" id="navbarCollapse">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
-          <li class=" nav-item">
+          <li class="nav-item list">
             <a class="nav-link list-a" href="/user/">
               <div class="icons">
                 <i class="fas fa-home "></i>
@@ -61,7 +59,6 @@
         </ul>
       </div>
     </nav>
-  </div>
   <div class="content">
     <% flash.forEach(message => { %>
       <div class="alert alert-<%= message.type %>">

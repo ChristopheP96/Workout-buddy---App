@@ -71,7 +71,7 @@
     height: 40px;
     text-align: center;
     overflow: hidden;
-    margin: 0 auto 10px;
+    margin: 0 auto;
 }
 
 .image {
@@ -160,16 +160,7 @@
 }
 
 .nav {
-    height: 60px;
     background-color: #593196;
-}
-
-.nav-height {
-    line-height: 0.5;
-}
-
-.navigation-barop {
-    margin-bottom: 15px;
 }
 
 .profile-content {
