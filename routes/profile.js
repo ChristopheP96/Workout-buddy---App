@@ -67,12 +67,10 @@ router.post('/updateProfile', upload.single('picture'), (req, res, next) => {
   const picture = req.file.filename;
   const {
     description,
-    preferences,
   } = req.body;
   User.findByIdAndUpdate(_id, {
     picture,
     description,
-    preferences,
   })
     .then(() => {
       res.redirect('/profile');

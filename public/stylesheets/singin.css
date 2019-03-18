@@ -11,6 +11,10 @@ body {
   background-color: #F5F5F5;
 }
 
+.content-body {
+  margin-top: 30px;
+}
+
 .logo{
     width: 90px;
     height: 90px;
@@ -61,6 +65,11 @@ body {
 .profile {
   padding-bottom: 2rem;
   text-align: left;
+}
+
+.singup {
+  background-color: #593196;
+  color: whitesmoke;
 }
 
 .uncentered-new-worktout {

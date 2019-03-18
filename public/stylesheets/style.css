@@ -1,3 +1,10 @@
+.about{
+    font-size: 1.5rem;
+    margin: 15px 0;
+    font-style: italic;
+    text-align: center;
+    color: #333;
+}
 .avatar {
     vertical-align: middle;
     width: 50px;
@@ -27,9 +34,11 @@
     border-radius: 1.25rem;
 }
 
-.widthdraw {
-    text-align: center;
-}
+
+
+
+
+
 
 .error500 {
     text-align: center;
@@ -171,35 +180,39 @@
     background-color: #593196;
 }
 
-.profile-content {
-    font-size: 2em;
+.profile-card a {
+    text-decoration: none;
+}
+
+.profile-card {
+    width: 20rem;
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    box-shadow: .5rem .5rem .3rem rgba(0,0,0,0.2);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.profile-card h1 {
+    color: #333;
+}
+
+.profile-card-wrapper{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
 }
 
 .profile-img {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.profile-links-wrapper {
-    text-align: center;
-}
-
-.profile-links {
-    display: inline-block;
-}
-
-.profile-text-container {
-    width: 95%;
-    margin: 0 auto;
-}
-
-.profile-titles {
-    font-size: 1em;
-}
-
-.profile-unit {
-   width: 17em;
-   margin: 0 auto;
+    height:18rem;
+    width:18rem;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .sports-container {
@@ -213,12 +226,19 @@
     white-space: nowrap;
 }
 
-.update-profile-link {
-    padding-bottom: 6em;
+.update-btn {
+    background-color: #593196;
+    color: whitesmoke;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
 }
 
-.user-name, .profile-title, .profile-explanation {
-    padding-bottom: 1em;
+.update-container{
+    margin: 5px auto;
+}
+
+.widthdraw {
+    text-align: center;
 }
 
 .workout-content {
@@ -228,9 +248,4 @@
 .wrap {
     padding-left: 3em;
     padding-right: 3em;
-}
-
-.singup {
-    background-color: #593196;
-    color: whitesmoke;
 }

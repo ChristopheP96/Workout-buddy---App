@@ -1,42 +1,20 @@
-<div class="container">
-  <div class="page-header">
-    <h1 class="profile-title">Profile</h1>
-  </div>
-
-  <div class="profile-explanation">
-    <h2 class=""> Here the information other users see about you </h2>
-  </div>
-
-  <div class="profile-unit shadow p-1 mb-4 rounded">
-      <div class="profile-img">
-        <img class="rounded" src=" <%= user.picture %> " alt="Smiley face" height="250em" width="250em">
+<div class="profile-section">
+  <div class="profile-card-wrapper">
+    <div class="profile-card">
+      <img class="profile-img" src=" <%= user.picture %> " 
+      onerror="if (this.src != 'error.jpg') this.src = '/images/default-picture.jpg';">
+      <h1> <%= user.name %> </h1>
+      <p class="about">Who are you and what are your favotires workouts? <i><%= user.description %></i></p>
+      <div class="update-container">
+        <a class="update-btn" href="/profile/updateProfile">
+          Update profile
+        </a>
       </div>
-      <div class="profile-text-container bg-light">
-        <div class="user-name">
-          <%= user.name %>
-        </div>
-        <div class="user-favs d-inline">
-          <h2 class="profile-titles">Your favourite sports: <i><%= user.preferences %></i>
-          </h2>
-        </div>
-        <div class="Description d-inline">
-          <h2 class="profile-titles">About you: <i><%= user.description %></i>
-            </h2>
-        </div>
-      </div>
+    </div>    
   </div>
-
-    <div class=" profile-links-wrapper">
-      <div class="profile-links">
-        <div class="update-profile-link">
-          <a class="link " href="/profile/updateProfile">
-            Click here to update your profile
-          </a>
-        </div>
-        <form action="/profile/deleteProfile" method="post">
-          <input class="btn btn-danger" type="submit" value="Delete your profile permanently">
-        </form>
-      </div>
-    </div>
-  
+</div>
+<div>
+  <form action="/profile/deleteProfile" method="post">
+  <input class="btn btn-danger" type="submit" value="Delete your profile permanently">
+  </form>
 </div>
