@@ -1,18 +1,23 @@
 <div class="container">
 <form id="form" action="/signup" method="POST">
-    <label class="signin-form" for="name"></label><br>
+  <div class="form-label-group">
+    <label for="name"></label><br>
     <input type="text" name="name" class="rounded"
       placeholder="Name">
-    <br>  
-    <label class="signin-form" for="username"></label><br>
+  </div>
+  <div class="form-label-group">     
+    <label for="username"></label><br>
     <input type="text" name="username" class="rounded"
       placeholder="Username">
-    <br>  
-    <label class="signin-form" for="password"></label><br>
+  </div>
+  <div class="form-label-group">    
+    <label for="password"></label><br>
     <input type="password" name="password" class="rounded"
-      placeholder="password"><br>
-    <div class="links">
-      <button class="link" type="submit" >Create account</button>
-    </div>
+      placeholder="password">
+  </div>
+  <br>    
+  <div>
+    <button class="btn button singup" type="submit" >Create account</button>
+  </div>
 </form>
 </div>
