@@ -62,12 +62,19 @@
     font-weight: normal;
 }
 
+
 .football {
     background-image: url("/images/football.jpg");
     background-position: center;
     background-size: cover;
 
 
+}
+
+.form-group textarea {
+    border-radius: 10px;
+    box-shadow: 5px 5px rgb(189, 115, 173);;
+    opacity: 2.3;
 }
 .home {
     background-color: #593196;
@@ -180,6 +187,10 @@
     background-color: #593196;
 }
 
+.picture {
+    margin-right: -46px;
+}
+
 .profile-card a {
     text-decoration: none;
 }
@@ -235,6 +246,25 @@
 
 .update-container{
     margin: 5px auto;
+}
+
+.update-btn-profile {
+    background-color: #593196;
+    color: whitesmoke;
+    border-radius: 10px;
+    padding: 5px 20px;
+} 
+
+.update-profile-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 2.25rem;
 }
 
 .widthdraw {

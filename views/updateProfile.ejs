@@ -1,15 +1,17 @@
-<div class="container">
-  <h2>Hey <%= user.username %>, here you can update the information you want people to see about you</h2>
-  <form action="/profile/updateProfile" method="post" enctype="multipart/form-data">
+<h2><%= user.username %>, update your profile.</h2>
+<div class="container home-center update-profile-card">
+  <form class="form-group home-center" action="/profile/updateProfile" method="post" enctype="multipart/form-data">
     <div>
-      <label>Picture</label>
-      <input type="file" id="picture" name="picture" />
-    </div>
-    <div>
-      <label for="description">Write down a brief description</label>
-      <br>
+      <label>Who are you and what type of workouts are you looking for?</label><br>
       <textarea type="text" name="description" id="description"></textarea>
-    </div>    
-    <input type="submit" value="Update">
-  </form>
+    </div>
+    <br>
+    <div class="picture">
+        <label>Picture:</label>
+        <input type="file" id="picture" name="picture" />
+    </div>
+      <br>    
+      <input class="update-btn-profile" type="submit" value="Update">
+    </form>
+  </div>  
 </div> 
